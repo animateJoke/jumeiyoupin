@@ -1,5 +1,7 @@
 <template>
     <div class="main">
+        <xsearch/>
+        <xnav/>
         <router-view></router-view>
         <xfooter />
     </div>
@@ -7,9 +9,13 @@
 
 <script>
     import xfooter from "./public/footerbar.vue";
+    import xsearch from "./home/index/search.vue";
+    import xnav from "./home/index/nav.vue";
     export default {
         components:{
-            xfooter
+            xfooter,
+            xsearch,
+            xnav
         }
     }
 </script>

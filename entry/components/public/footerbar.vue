@@ -2,7 +2,7 @@
     <div class="footer">
         <ul>
             <li>
-                <a href="#/home/index">首页</a>
+                <a href="#/home/index1/index2">首页</a>
             </li>
             <li>
                 <a href="#/home/group">拼团</a>
