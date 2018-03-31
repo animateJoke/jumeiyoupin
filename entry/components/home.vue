@@ -7,7 +7,6 @@
 
 <script>
     import xfooter from "./public/footerbar.vue";
-
     export default {
         components:{
             xfooter
