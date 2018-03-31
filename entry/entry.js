@@ -1,6 +1,8 @@
 import Vue from "vue";
 
 require("./css/reset.css");
+import $ from "jquery"
+import getAjax from "./ajax.js"
 //状态管理
 import Vuex from 'vuex'
 
@@ -28,19 +30,21 @@ import luxurious from "./components/home/index/luxurious.vue";
 import brand from "./components/home/index/brand.vue";
 
 
+
 const store = new Vuex.Store({
     //消息
     state: {
+        num:0,
         list:[]
     },
     //获取值得方法
     getters: {
-        getSrc(state) {
+        getList(state) {
             //处理数据
-            return state.src
+            return state.list
         }
     }
-})
+});
 
 //路由注册
 const router = new VueRouter({
@@ -88,6 +92,12 @@ new Vue({
             <router-view></router-view>
         </div>
     `,
-    router
+    router,
+    store,
+    beforeCreate(){
+        getAjax(this.$store.state.num,function(arr){
+            this.$store.state.list =this.$store.state.list.concat(arr);
+        }.bind(this))
+    }
 
 });
