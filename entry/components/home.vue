@@ -1,6 +1,5 @@
 <template>
     <div class="main">
-
         <router-view></router-view>
         <xfooter />
     </div>
@@ -10,7 +9,7 @@
     import xfooter from "./public/footerbar.vue";
     export default {
         components:{
-            xfooter,
+            xfooter
         }
     }
 </script>

@@ -11,12 +11,10 @@
 
     import xsearch from "./index/search.vue";
     import xnav from "./index/nav.vue";
-    import search_page from "./index/search_page.vue";
     export default {
         components:{
             xsearch,
-            xnav,
-            search_page
+            xnav
         }
     }
 </script>
