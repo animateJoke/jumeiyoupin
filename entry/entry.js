@@ -12,6 +12,7 @@ Vue.use(VueRouter);
 
 // 一级路由
 import home from "./components/home.vue";
+import info from "./components/info.vue";
 
 // 二级路由
 import index1 from "./components/home/index.vue";
@@ -25,6 +26,20 @@ import free from "./components/home/index/free.vue";
 import mom from "./components/home/index/mom.vue";
 import luxurious from "./components/home/index/luxurious.vue";
 import brand from "./components/home/index/brand.vue";
+
+const store = new Vuex.Store({
+    //消息
+    state: {
+        list:[]
+    },
+    //获取值得方法
+    getters: {
+        getSrc(state) {
+            //处理数据
+            return state.src
+        }
+    }
+})
 
 //路由注册
 const router = new VueRouter({
@@ -60,6 +75,9 @@ const router = new VueRouter({
             path : "center",
             component : center
         }]
+    },{
+        path:"info",
+        component : info
     }]
 });
 new Vue({
