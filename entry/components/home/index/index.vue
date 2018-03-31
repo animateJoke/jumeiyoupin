@@ -1,6 +1,6 @@
 <template>
     <div class="list">
-        <a v-for="(a,index) in arr" :data-id="index" :style="{background:'url('+JSON.parse(a.g_img)['320']+') no-repeat'}" :href="'#/info?g_id='+a.g_id">
+        <a v-for="(a,index) in getList" :data-id="index" :style="{background:'url('+JSON.parse(a.g_img)['320']+') no-repeat'}" :href="'#/info?g_id='+a.g_id">
             <div><p v-text="a.g_name"></p></div>
             <p>
                 <span class="price">￥<i v-text="a.g_price"></i></span>
@@ -8,34 +8,37 @@
             </p>
             <p v-text="a.g_product_desc" class="desc"></p>
         </a>
+        <button @click="jiazai">加载更多</button>
     </div>
 </template>
 
 <script>
     import $ from "jquery"
-
+    import getAjax from "../../../ajax.js"
     export default {
         data(){
-            return {
-                arr : []
-            }
+          return {
+          }
         },
         mounted(){
-            var self = this;
-            $.ajax({
-                url : "http://localhost:55555/home/list",
-                type : "post",
-                dataType : "json",
-                data : {
-                    index : 0
-                }
-            }).then(function(res){
-                self.arr = res;
-                console.log(res);
-            })
+
         },
-        computed : {}
+        computed : {
+            getList(){
+                return this.$store.state.list
+            }
+        },
+        methods:{
+            jiazai() {
+                this.$store.state.num++;
+                getAjax(this.$store.state.num,function(arr){
+                    this.$store.state.list =this.$store.state.list.concat(arr);
+                }.bind(this))
+            },
+        }
     }
+
+
 </script>
 
 <style scoped="">
