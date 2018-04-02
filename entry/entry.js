@@ -16,6 +16,7 @@ Vue.use(VueRouter);
 // 一级路由
 import home from "./components/home.vue";
 import info from "./components/info.vue";
+import fenye from "./components/fenye.vue"
 
 // 二级路由
 import index1 from "./components/home/index.vue";
@@ -33,9 +34,12 @@ import brand from "./components/home/index/brand.vue";
 
 const store = new Vuex.Store({
     //消息
-    state : {
-        num : 0,
-        list : []
+
+    state: {
+        num:0,
+        list:[],
+        isShow:false,
+        isShow2:false
     },
     //获取值得方法
     getters : {
@@ -83,6 +87,9 @@ const router = new VueRouter({
     }, {
         path : "/info",
         component : info
+    },{
+        path:"/fenye",
+        component : fenye
     }]
 });
 new Vue({
