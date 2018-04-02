@@ -4,6 +4,8 @@
   "description": "",
   "main": "index.js",
   "dependencies": {
+    "@babel/core": "^7.0.0-beta.42",
+    "@babel/preset-env": "^7.0.0-beta.42",
     "babel-loader": "^8.0.0-beta.0",
     "body-parser": "^1.18.2",
     "css-loader": "^0.28.11",
@@ -11,6 +13,7 @@
     "file-loader": "^1.1.11",
     "html-loader": "^0.5.5",
     "jquery": "^3.3.1",
+    "mysql": "^2.15.0",
     "style-loader": "^0.20.3",
     "uglifyjs-webpack-plugin": "^1.2.4",
     "vue": "^2.5.16",
