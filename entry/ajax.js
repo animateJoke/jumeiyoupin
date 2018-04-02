@@ -12,6 +12,6 @@ var fn=function(num,fn){
         arr = res;
         fn(arr)
     })
-}
+};
 
 export default fn
