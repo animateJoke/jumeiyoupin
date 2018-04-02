@@ -1,6 +1,7 @@
 import Vue from "vue";
 
 require("./css/reset.css");
+require("./css/iconfont/iconfont.css");
 import $ from "jquery"
 import getAjax from "./ajax.js"
 //状态管理
@@ -30,16 +31,15 @@ import luxurious from "./components/home/index/luxurious.vue";
 import brand from "./components/home/index/brand.vue";
 
 
-
 const store = new Vuex.Store({
     //消息
-    state: {
-        num:0,
-        list:[]
+    state : {
+        num : 0,
+        list : []
     },
     //获取值得方法
-    getters: {
-        getList(state) {
+    getters : {
+        getList(state){
             //处理数据
             return state.list
         }
@@ -54,20 +54,20 @@ const router = new VueRouter({
         children : [{
             path : "index1",
             component : index1,
-            children:[{
-                path:"index2",
+            children : [{
+                path : "index2",
                 component : index2,
-            },{
-                path:"free",
+            }, {
+                path : "free",
                 component : free,
-            },{
-                path:"mom",
+            }, {
+                path : "mom",
                 component : mom,
-            },{
-                path:"luxurious",
+            }, {
+                path : "luxurious",
                 component : luxurious,
-            },{
-                path:"brand",
+            }, {
+                path : "brand",
                 component : brand,
             }]
         }, {
@@ -80,8 +80,8 @@ const router = new VueRouter({
             path : "center",
             component : center
         }]
-    },{
-        path:"info",
+    }, {
+        path : "/info",
         component : info
     }]
 });
@@ -95,8 +95,8 @@ new Vue({
     router,
     store,
     beforeCreate(){
-        getAjax(this.$store.state.num,function(arr){
-            this.$store.state.list =this.$store.state.list.concat(arr);
+        getAjax(this.$store.state.num, function(arr){
+            this.$store.state.list = this.$store.state.list.concat(arr);
         }.bind(this))
     }
 
