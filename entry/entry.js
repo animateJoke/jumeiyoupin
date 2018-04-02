@@ -3,6 +3,8 @@ import Vue from "vue";
 require("./css/reset.css");
 import $ from "jquery"
 import getAjax from "./ajax.js"
+import getAjax1 from "./ajax1.js"
+import getinfo1 from "./info1.js"
 //状态管理
 import Vuex from 'vuex'
 
@@ -15,7 +17,7 @@ Vue.use(VueRouter);
 // 一级路由
 import home from "./components/home.vue";
 import info from "./components/info.vue";
-
+import ginfo from "./components/ginfo.vue";
 // 二级路由
 import index1 from "./components/home/index.vue";
 import group from "./components/home/group.vue";
@@ -28,6 +30,8 @@ import free from "./components/home/index/free.vue";
 import mom from "./components/home/index/mom.vue";
 import luxurious from "./components/home/index/luxurious.vue";
 import brand from "./components/home/index/brand.vue";
+import nav from "./components/home/group/nav.vue";
+import rmd from "./components/home/group/rmd.vue";
 
 
 
@@ -35,13 +39,25 @@ const store = new Vuex.Store({
     //消息
     state: {
         num:0,
-        list:[]
+        num1:0,
+        num2:0,
+        list:[],
+        list1:[],
+        list2:[]
     },
     //获取值得方法
     getters: {
         getList(state) {
             //处理数据
             return state.list
+        },
+        getList1(state) {
+            //处理数据
+            return state.list1
+        },
+        getInfo(state) {
+            //处理数据
+            return state.list2
         }
     }
 });
@@ -72,7 +88,14 @@ const router = new VueRouter({
             }]
         }, {
             path : "group",
-            component : group
+            component : group,
+            children:[{
+            	path:"nav",
+            	component : nav,
+            },{
+            	path:"rmd",
+            	component : rmd,
+            }]
         }, {
             path : "cart",
             component : cart
@@ -83,6 +106,9 @@ const router = new VueRouter({
     },{
         path:"info",
         component : info
+    },{
+        path:"ginfo",
+        component : ginfo
     }]
 });
 new Vue({
@@ -97,6 +123,12 @@ new Vue({
     beforeCreate(){
         getAjax(this.$store.state.num,function(arr){
             this.$store.state.list =this.$store.state.list.concat(arr);
+        }.bind(this)),
+        getAjax1(this.$store.state.num1,function(arr){
+            this.$store.state.list1 =this.$store.state.list1.concat(arr);
+        }.bind(this))
+        getinfo1(this.$store.state.num2,function(arr){
+            this.$store.state.list2 =this.$store.state.list2.concat(arr);
         }.bind(this))
     }
 
