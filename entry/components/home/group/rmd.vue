@@ -16,7 +16,7 @@
 
 <script>
 	import $ from "jquery"
-    import getAjax1 from "../../../ajax1.js"
+    import getAjax from "../../../ajax.js"
     export default {
         data(){
           return {
@@ -33,7 +33,7 @@
         methods:{
             jiazai() {
                 this.$store.state.num1++;
-                getAjax1(this.$store.state.num1,function(arr){
+                getAjax("http://localhost:55555/group/good",this.$store.state.num1,function(arr){
                     this.$store.state.list1 =this.$store.state.list1.concat(arr);
                 }.bind(this))
             },

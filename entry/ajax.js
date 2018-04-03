@@ -1,8 +1,8 @@
 import $ from "jquery"
-var fn=function(num,fn){
+var fn=function(url,num,fn){
     var arr=[];
     $.ajax({
-        url : "http://localhost:55555/home/list",
+        url :url,
         type : "post",
         dataType : "json",
         data : {
