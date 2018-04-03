@@ -1,3 +1,4 @@
+<!--推荐-->
 <template>
 	<div class="list">
         <a v-for="(a,index) in getList1" :data-id="index"  :href="'#/ginfo?id='+index">
@@ -8,8 +9,10 @@
                 <span class="oldprice"><i v-text="a.old_price"></i></span>
             </p>
             <p v-text="a.sig_price" class="desc"></p>
-            <p>去开团</p>
+            <p class="go">去开团</p>
+            <div v-text="a.num_text" class="pl"></div>
         </a>
+        
         <button @click="jiazai">加载更多</button>
     </div>
 </template>
@@ -41,7 +44,7 @@
     }
 </script>
 
-<style scoped="">
+<style scoped>
     .list{
         padding-bottom:.5rem;
        
@@ -51,6 +54,7 @@
         box-sizing:border-box;
         /*padding-left:1.6rem;*/
         width: 100%;
+        position: relative;
        margin-bottom: .08rem;
        background: white;
         
@@ -78,7 +82,7 @@
     	padding-top: .1rem;
     }
     
-    .list a[data-id] p:last-child{
+    .list a[data-id] .go{
     	float: right;
     	width: .92rem;
     	height: .28rem;
@@ -108,5 +112,18 @@
     .desc{
         color:#ccc;
         padding-left: .12rem;
+    }
+    .list a[data-id] .pl{
+    	position: absolute;
+    	left: -.15rem;
+    	top: 1rem;
+    	width: 1rem;
+    	height: .2rem;
+    	border: solid 1px #ccc;
+    	color: #666;
+    	text-align: center;
+    	line-height: .2rem;
+    	background: #fafafa;
+    	border-radius: .2rem;
     }
 </style>

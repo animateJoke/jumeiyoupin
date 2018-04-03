@@ -115,8 +115,8 @@
 		computed: {
 			getList1() {
 				
-				console.log(this.$store.state.list1[this.id]);
-				return this.$store.state.list1[this.id]
+				console.log(this.$store.state.food[this.id]);
+				return this.$store.state.food[this.id]
 			}
 
 		},
