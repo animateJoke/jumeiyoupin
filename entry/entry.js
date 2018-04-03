@@ -1,6 +1,7 @@
 import Vue from "vue";
 
 require("./css/reset.css");
+require("./css/iconfont/iconfont.css");
 import $ from "jquery"
 import getAjax from "./ajax.js"
 //状态管理
