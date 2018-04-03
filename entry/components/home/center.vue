@@ -10,11 +10,11 @@
 			<img src="../../img/default.png" />
 			<ul>
 				<li>
-					<a href="../register.vue">注册</a>
+					<a href="#/register">注册</a>
 				</li>
 				<li>|</li>
 				<li>
-					<a href="../login.vue">登录</a>
+					<a href="#/login">登录</a>
 				</li>
 			</ul>
 		</div>
@@ -126,7 +126,7 @@
 <script>
 </script>
 
-<style>
+<style scoped="scoped">
 	.header {
 		width: 100%;
 		height: 0.38rem;
