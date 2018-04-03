@@ -93,11 +93,17 @@ router.post('/list', function(req, res, next){
         res.json(results)
     })
 });
+
+
 router.post('/info', function(req, res, next){
     res.append("Access-Control-Allow-Origin", "*");
     var str = "select * from `list` where g_id=?";
     mysql(str, [req.body.id], function(results){
-        res.json(results)
+        var str1 = "select * from `evaluate`";
+        mysql(str1, [], function(results1){
+            results[0].evaluate=results1
+            res.json(results)
+        })
     })
 });
 
