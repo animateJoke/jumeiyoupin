@@ -1,22 +1,55 @@
 <template>
 	<div style="width: 100%;height: 100%;">
 		<div class="header1">
-			<a href="#"><</a>
+			<a href="#/home/center"><</a>
 			<a href="#">登录</a>
-			<a href="#">注册</a>
+			<a href="#/register">注册</a>
 		</div>
 		<form>
-			<input type="text" name=username placeholder="请输入用户名" />
-			<input type="password" name=pwd placeholder="6-16位登录密码" />
-			<input type="submit" value="登录" />
+			<input type="text" placeholder="请输入用户名" v-model="username" />
+			<input type="password" placeholder="6-16位登录密码" v-model="pwd" />
+			<input type="submit" value="登录" @click="login" />
 		</form>
 	</div>
 </template>
 
 <script>
+	
+	import $ from "jquery"
+	export default {
+		data() {
+			return {
+				username: "",
+				pwd: "",
+			}
+		},
+		methods: {
+			login() {
+				var self = this;
+					
+				$.ajax({
+					type: "post",
+					url: "http://localhost:55556/register/login",
+					data: {
+						u_name: self.username,
+						u_pwd: self.pwd
+					}
+				}).done((res) => {
+					console.log(res);
+					if(res.length==1){
+						    window.location.href="#/home/index1/index2"
+                        }else {
+                            alert("账号或密码错误");
+                        }
+				})
+				return false;
+			}
+		}
+	}
+	
 </script>
 
-<style>
+<style scoped>
 	.header1 {
 		width: 100%;
 		height: 0.43rem;

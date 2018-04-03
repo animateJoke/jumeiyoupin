@@ -78,7 +78,7 @@
         mounted:function(){
             var self=this;
            var p_id=window.location.href.split("?")[1];
-            console.log(p_id);
+
             $.ajax({
                 url:"http://localhost:55555/home/fenye",
                 type:"POST",
@@ -86,9 +86,8 @@
                     id:p_id
                 }
             }).then(function (res) {
-                console.log(res);
                 self.arr5=res
-                console.log(self.arr5);
+
             })
         }
     }
@@ -165,52 +164,6 @@
     .ll li{
         float: left;
     }
-    .liebiao li{
-        height: 1.24rem;
-        border-bottom:1px solid #e3e3e4 ;
-        padding: .12rem;
-        box-sizing: border-box;
-        overflow: hidden;
-    }
-    .liebiao li .pic{
-        width: 1rem;
-        height: 1rem;
-    }
-    .nox{
-        width: 1rem;
-        height: 1rem;
-        position: relative;
-        float: left;
-        margin-right: 0.1rem;
-    }
-    .r{
-        float: left;
-    }
-    .r h4{
-        font-size: .14rem;
-        color: #595959;
-    }
-    .r p{
-        color: #fe4070;
-        font-size: 0.14rem;
-        margin-top: .2rem;
-    }
-    h5{
-        color: #9f9f9f;
-        font-size: .12rem;
-        margin-top: .24rem;
-    }
-    .r i{
-        text-decoration: line-through;
-        color: #969896;
-    }
-    .pic1{
-        width: .3rem;
-        height: .23rem;
-        position: absolute;
-        left: 0;
-        top: 0;
-    }
 
     .list1{
         padding-bottom:.5rem;
@@ -222,6 +175,7 @@
         height:1.5rem;
         line-height:.2rem;
         background-size:cover;
+        border-bottom: 1px solid #e3e3e4;
     }
     .list1 a div{
         padding-top:.3rem;
