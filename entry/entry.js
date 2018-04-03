@@ -2,6 +2,7 @@ import Vue from "vue";
 
 require("./css/reset.css");
 require("./css/iconfont/iconfont.css");
+
 import $ from "jquery"
 import getAjax from "./ajax.js"
 import getAjax1 from "./ajax1.js"
