@@ -1,3 +1,4 @@
+<!--推荐-->
 <template>
 	<div class="list">
         <a v-for="(a,index) in getList1" :data-id="index"  :href="'#/ginfo?id='+index">
@@ -41,7 +42,7 @@
     }
 </script>
 
-<style scoped="">
+<style scoped>
     .list{
         padding-bottom:.5rem;
        

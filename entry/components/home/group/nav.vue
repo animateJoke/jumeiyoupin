@@ -1,20 +1,20 @@
 <template>
 	<div class="nav">
 		<ul>
-			<li>
-				<a href="#/home/group/rmd">推荐</a>
+			<li >
+				<a href="#/home/group/rmd" :class="{'current':index==rmd}">推荐</a>
 			</li>
 			<li>
-				<a href="#/home/index1/free">母婴健康</a>
+				<a href="#/home/group/mama" :class="{'current':index==mama}">母婴健康</a>
 			</li>
 			<li>
-				<a href="#/home/index1/mom">美妆</a>
+				<a href="#/home/group/beauti" :class="{'current':index==beauti}">美妆</a>
 			</li>
 			<li>
-				<a href="#/home/index1/luxurious">家居</a>
+				<a href="#/home/group/jiaju" :class="{'current':index==jiaju}">家居</a>
 			</li>
 			<li>
-				<a href="#/home/index1/brand">食品保健</a>
+				<a href="#/home/group/food" :class="{'current':index==food}">食品保健</a>
 			</li>
 			<li>
 				<a href="#/home/index1/brand">内衣</a>
@@ -48,7 +48,7 @@
 	
 </script>
 
-<style scoped="">
+<style scoped>
     .nav::-webkit-scrollbar{
         display:none;
     }
@@ -71,6 +71,14 @@
         
     }
     .nav ul li a{
+    	height:43px;
+    	display: block;
     	color: #666;
+    }
+    .nav .current{
+    	
+		color: #FF4070;
+		border-bottom: solid 2px #ff4070;
+	
     }
 </style>
