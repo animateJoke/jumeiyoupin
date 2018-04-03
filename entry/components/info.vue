@@ -34,6 +34,9 @@
                 </div>
             </div>
         </div>
+        <div class="evaluate">
+
+        </div>
         <div class="box" v-html="flag?obj.g_html:''"></div>
         <div class="footer">
             <a href="#" class="store"><i class="iconfont">&#xe736;</i>
@@ -69,7 +72,6 @@
                 this.ele.scrollLeft();
             },
             moveEnd(){
-
                 this.index = Math.round(this.ele.scrollLeft() / document.body.clientWidth);
 
                 this.ele.scrollLeft(this.index * document.body.clientWidth);
