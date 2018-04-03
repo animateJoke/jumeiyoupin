@@ -17,6 +17,34 @@ router.post('/good', function(req, res, next) {
         res.json(results)
     })
 });
+router.post('/mama', function(req, res, next) {
+    res.append("Access-Control-Allow-Origin","*");
+    var str = "select * from `mama`";
+    mysql(str,[],function(results){
+        res.json(results)
+    })
+});
+router.post('/beauti', function(req, res, next) {
+    res.append("Access-Control-Allow-Origin","*");
+    var str = "select * from `beauti`";
+    mysql(str,[],function(results){
+        res.json(results)
+    })
+});
+router.post('/jiaju', function(req, res, next) {
+    res.append("Access-Control-Allow-Origin","*");
+    var str = "select * from `jiaju`";
+    mysql(str,[],function(results){
+        res.json(results)
+    })
+});
+router.post('/food', function(req, res, next) {
+    res.append("Access-Control-Allow-Origin","*");
+    var str = "select * from `food`";
+    mysql(str,[],function(results){
+        res.json(results)
+    })
+});
 router.post('/info', function(req, res, next) {
     res.append("Access-Control-Allow-Origin","*");
     var str = "select * from `goods` where id=?";

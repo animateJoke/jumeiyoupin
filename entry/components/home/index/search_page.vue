@@ -86,12 +86,6 @@
                         <li class="search_sub" @click="change"><a href="#/fenye?35">其他美容工具</a></li>
                     </ul>
                 </li>
-                <!--<li class="search_link" @click="show(7)"><span :style="{color:num==7&&bool?'#fe4070':'#666'}">其他<img :src="num==7&&bool?imgg2:img1" alt=""></span>-->
-                    <!--<ul class="search_subs" v-show="num==7&&bool">-->
-                        <!--<li class="search_sub"><a href="#">喜从盒来</a></li>-->
-                        <!--<li class="search_sub"><a href="#">会员生日礼包</a></li>-->
-                    <!--</ul>-->
-                <!--</li>-->
             </ul>
         </div>
     </div>

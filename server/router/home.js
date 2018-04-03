@@ -117,11 +117,18 @@ router.get('/job', function(req, res, next){
 });
 
 router.post('/fenye', function(req, res, next){
-    console.log(req);
     res.append("Access-Control-Allow-Origin", "*");
     var str = "select * from `list` where p_id="+req.body.id;
     mysql(str,[], function(results){
         res.json(results)
+    })
+});
+
+router.post('/search', function (req, res) {
+    res.append("Access-Control-Allow-Origin", "*");
+    var str="select * from list where g_name like '%"+req.body.name+"%'";
+    mysql(str,{},function (result) {
+        res.json(result);
     })
 });
 
