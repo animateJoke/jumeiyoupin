@@ -28,7 +28,7 @@
 	
 </script>
 
-<style>
+<style scoped>
 	.ginfo{
 		background: white;
 	}

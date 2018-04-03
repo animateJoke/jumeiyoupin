@@ -18,7 +18,7 @@
     }
 </script>
 
-<style>
+<style scoped>
 div{
 	background: #f5f5f5;
 }
