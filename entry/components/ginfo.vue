@@ -1,27 +1,26 @@
 <template>
-	
+	<div class="ginfo">
+        <img :src="getList1?getList1.image:''"/>
+        
+    </div>
 </template>
 
 <script>
-	import $ from "jquery";
-	import getinfo1 from "../../../info1.js";
-	var str = window.location.href;
-		console.log(str);
-		var arr = str.split("=")[1];
-		console.log(arr);
-	export default {
+	import $ from "jquery"
+
+    export default {
         data(){
-          return {
-          }
-        },
-        mounted(){
-			
+            return {
+                id : window.location.href.split("=")[1]
+                
+            }
         },
         computed : {
-            
-        },
-        methods:{
-            
+            getList1(){
+            	console.log(this.id)
+                console.log(this.$store.state.list1[this.id]);
+                return this.$store.state.list1[this.id]
+            }
         }
     }
 		
@@ -30,5 +29,13 @@
 </script>
 
 <style>
-
+	.ginfo{
+		background: white;
+	}
+	.ginfo img{
+		width: 3.2rem;
+		height: 3.2rem;
+		margin-left: .3rem;
+		margin-bottom: .2rem;
+	}
 </style>

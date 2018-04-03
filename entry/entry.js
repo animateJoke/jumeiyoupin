@@ -1,10 +1,11 @@
 import Vue from "vue";
 
 require("./css/reset.css");
+require("./css/iconfont/iconfont.css");
 import $ from "jquery"
 import getAjax from "./ajax.js"
 import getAjax1 from "./ajax1.js"
-import getinfo1 from "./info1.js"
+
 //状态管理
 import Vuex from 'vuex'
 
@@ -17,7 +18,12 @@ Vue.use(VueRouter);
 // 一级路由
 import home from "./components/home.vue";
 import info from "./components/info.vue";
+
 import ginfo from "./components/ginfo.vue";
+
+import fenye from "./components/fenye.vue"
+
+
 // 二级路由
 import index1 from "./components/home/index.vue";
 import group from "./components/home/group.vue";
@@ -34,31 +40,32 @@ import nav from "./components/home/group/nav.vue";
 import rmd from "./components/home/group/rmd.vue";
 
 
-
 const store = new Vuex.Store({
     //消息
+
     state: {
         num:0,
+
         num1:0,
-        num2:0,
+  
         list:[],
         list1:[],
-        list2:[]
+        
+        isShow:false,
+        isShow2:false
+
     },
     //获取值得方法
-    getters: {
-        getList(state) {
+    getters : {
+        getList(state){
             //处理数据
             return state.list
         },
         getList1(state) {
             //处理数据
             return state.list1
-        },
-        getInfo(state) {
-            //处理数据
-            return state.list2
         }
+       
     }
 });
 
@@ -70,20 +77,20 @@ const router = new VueRouter({
         children : [{
             path : "index1",
             component : index1,
-            children:[{
-                path:"index2",
+            children : [{
+                path : "index2",
                 component : index2,
-            },{
-                path:"free",
+            }, {
+                path : "free",
                 component : free,
-            },{
-                path:"mom",
+            }, {
+                path : "mom",
                 component : mom,
-            },{
-                path:"luxurious",
+            }, {
+                path : "luxurious",
                 component : luxurious,
-            },{
-                path:"brand",
+            }, {
+                path : "brand",
                 component : brand,
             }]
         }, {
@@ -103,12 +110,16 @@ const router = new VueRouter({
             path : "center",
             component : center
         }]
-    },{
-        path:"info",
+    }, {
+        path : "/info",
         component : info
     },{
-        path:"ginfo",
+        path:"/ginfo",
         component : ginfo
+	},{
+        path:"/fenye",
+        component : fenye
+
     }]
 });
 new Vue({
@@ -121,15 +132,14 @@ new Vue({
     router,
     store,
     beforeCreate(){
+
         getAjax(this.$store.state.num,function(arr){
             this.$store.state.list =this.$store.state.list.concat(arr);
         }.bind(this)),
         getAjax1(this.$store.state.num1,function(arr){
             this.$store.state.list1 =this.$store.state.list1.concat(arr);
         }.bind(this))
-        getinfo1(this.$store.state.num2,function(arr){
-            this.$store.state.list2 =this.$store.state.list2.concat(arr);
-        }.bind(this))
+        
     }
 
 });

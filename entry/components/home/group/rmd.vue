@@ -1,6 +1,6 @@
 <template>
 	<div class="list">
-        <a v-for="(a,index) in getList1" :data-id="index"  :href="'#/g_info?id='+a.id">
+        <a v-for="(a,index) in getList1" :data-id="index"  :href="'#/ginfo?id='+index">
         	<img :src="a.image"/>
             <div><span v-text="a.name_tag"></span><span v-text="a.name_s"></span></div>
             <p class="p">
