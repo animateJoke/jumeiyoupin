@@ -2,7 +2,7 @@ import $ from "jquery"
 var fn=function(num,fn){
     var arr=[];
     $.ajax({
-        url : "http://localhost:55555/home/list",
+        url : "http://localhost:55555/group/good",
         type : "post",
         dataType : "json",
         data : {
@@ -12,6 +12,6 @@ var fn=function(num,fn){
         arr = res;
         fn(arr)
     })
-};
+}
 
 export default fn

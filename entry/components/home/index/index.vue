@@ -1,6 +1,6 @@
 <template>
     <div class="list">
-        <a v-for="(a,index) in getList" :data-id="index" :style="{background:'url('+JSON.parse(a.g_img)['320']+') no-repeat'}" :href="'#/info?g_id='+a.g_id">
+        <a v-for="(a,index) in getList" :style="{background:'url('+JSON.parse(a.g_img)['320']+') no-repeat'}" :href="'#/info?g_id='+index">
             <div><p v-text="a.g_name"></p></div>
             <p>
                 <span class="price">￥<i v-text="a.g_price"></i></span>
@@ -53,11 +53,11 @@
         line-height:.2rem;
         background-size:cover;
     }
-    .list a[data-id] div{
+    .list a div{
         padding-top:.3rem;
         height:.7rem;
     }
-    .list a[data-id] div p{
+    .list a div p{
         color:#666
     }
     .price{

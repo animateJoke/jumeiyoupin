@@ -5,7 +5,7 @@
                 <a href="#/home/index1/index2">首页</a>
             </li>
             <li>
-                <a href="#/home/group">拼团</a>
+                <a href="#/home/group/rmd">拼团</a>
             </li>
             <li>
                 <a href="#/home/cart">购物车</a>
