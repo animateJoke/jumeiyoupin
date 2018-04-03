@@ -91,4 +91,15 @@ router.get('/job', function(req, res, next){
     })
 });
 
+router.post('/fenye', function(req, res, next){
+    console.log(req);
+    res.append("Access-Control-Allow-Origin", "*");
+    var str = "select * from `list` where p_id="+req.body.id;
+    mysql(str,[], function(results){
+        res.json(results)
+    })
+});
+
+
+
 module.exports = router;

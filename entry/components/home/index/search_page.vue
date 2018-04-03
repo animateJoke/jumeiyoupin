@@ -9,89 +9,89 @@
             <ul class="search_links" style="height: 634px; opacity: 1;">
                 <li class="search_link" @click="show(0)"><span :style="{color:num==0&&bool?'#fe4070':'#666'}">面部护肤 <img :src="num==0&&bool?imgg2:img1" alt=""></span>
                     <ul class="search_subs" v-show="num==0&&bool">
-                        <li class="search_sub"><a href="#">眼部护理</a></li>
-                        <li class="search_sub"><a href="#">化妆水/爽肤水</a></li>
-                        <li class="search_sub"><a href="#">啫哩/凝露/凝胶</a></li>
-                        <li class="search_sub"><a href="#">精华</a></li>
-                        <li class="search_sub"><a href="#">面霜</a></li>
-                        <li class="search_sub"><a href="#">唇部护理</a></li>
-                        <li class="search_sub"><a href="#">洁面</a></li>
-                        <li class="search_sub"><a href="#">T区/特殊护理</a></li>
-                        <li class="search_sub"><a href="/#">面膜</a></li>
-                        <li class="search_sub"><a href="/#">乳液</a></li>
-                        <li class="search_sub"><a href="/#">精油</a></li>
-                        <li class="search_sub"><a href="/#">护肤套装</a></li>
+                        <li class="search_sub"><a href="#/fenye?0">眼部护理</a></li>
+                        <li class="search_sub"><a href="#/fenye?1">化妆水/爽肤水</a></li>
+                        <li class="search_sub"><a href="#/fenye?2">啫哩/凝露/凝胶</a></li>
+                        <li class="search_sub"><a href="#/fenye?3">精华</a></li>
+                        <li class="search_sub"><a href="#/fenye?4">面霜</a></li>
+                        <li class="search_sub"><a href="#/fenye?5">唇部护理</a></li>
+                        <li class="search_sub"><a href="#/fenye?6">洁面</a></li>
+                        <li class="search_sub"><a href="#/fenye?7">T区/特殊护理</a></li>
+                        <li class="search_sub"><a href="/#/fenye?8">面膜</a></li>
+                        <li class="search_sub"><a href="/#/fenye?9">乳液</a></li>
+                        <li class="search_sub"><a href="/#/fenye?10">精油</a></li>
+                        <li class="search_sub"><a href="/#/fenye?11">护肤套装</a></li>
                     </ul>
                 </li>
                 <li class="search_link" @click="show(1)"><span :style="{color:num==1&&bool?'#fe4070':'#666'}">彩妆<img :src="num==1&&bool?imgg2:img1" alt=""></span>
                     <ul class="search_subs" v-show="num==1&&bool">
-                        <li class="search_sub"><a href="#">眼部</a></li>
-                        <li class="search_sub"><a href="#">粉饼/散粉</a></li>
-                        <li class="search_sub"><a href="#">唇部</a></li>
-                        <li class="search_sub"><a href="#">睫毛</a></li>
-                        <li class="search_sub"><a href="#">眉部</a></li>
-                        <li class="search_sub"><a href="#">美甲</a></li>
-                        <li class="search_sub"><a href="#">隔离</a></li>
-                        <li class="search_sub"><a href="#">底妆</a></li>
-                        <li class="search_sub"><a href="#">遮瑕/修容</a></li>
-                        <li class="search_sub"><a href="#">防晒</a></li>
-                        <li class="search_sub"><a href="#">卸妆</a></li>
-                        <li class="search_sub"><a href="#">腮红</a></li>
-                        <li class="search_sub"><a href="#">彩妆套装</a></li>
+                        <li class="search_sub"><a href="#/fenye?12">眼部</a></li>
+                        <li class="search_sub"><a href="#/fenye?13">粉饼/散粉</a></li>
+                        <li class="search_sub"><a href="#/fenye?14">唇部</a></li>
+                        <li class="search_sub"><a href="#/fenye?15">睫毛</a></li>
+                        <li class="search_sub"><a href="#/fenye?16">眉部</a></li>
+                        <li class="search_sub"><a href="#/fenye?17">美甲</a></li>
+                        <li class="search_sub"><a href="#/fenye?18">隔离</a></li>
+                        <li class="search_sub"><a href="#/fenye?19">底妆</a></li>
+                        <li class="search_sub"><a href="#/fenye?20">遮瑕/修容</a></li>
+                        <li class="search_sub"><a href="#/fenye?21">防晒</a></li>
+                        <li class="search_sub"><a href="#/fenye?22">卸妆</a></li>
+                        <li class="search_sub"><a href="#/fenye?23">腮红</a></li>
+                        <li class="search_sub"><a href="#/fenye?24">彩妆套装</a></li>
                     </ul>
                 </li>
                 <li class="search_link" @click="show(2)"><span :style="{color:num==2&&bool?'#fe4070':'#666'}">身体护理<img :src="num==2&&bool?imgg2:img1" alt=""></span>
                     <ul class="search_subs" v-show="num==2&&bool">
-                        <li class="search_sub"><a href="#">个人护理</a></li>
-                        <li class="search_sub"><a href="#">润肤</a></li>
-                        <li class="search_sub"><a href="#">纤体/美体</a></li>
-                        <li class="search_sub"><a href="#">手足护理</a></li>
-                        <li class="search_sub"><a href="#">护发</a></li>
-                        <li class="search_sub"><a href="#">沐浴</a></li>
-                        <li class="search_sub"><a href="#">洗发</a></li>
-                        <li class="search_sub"><a href="#">美发造型</a></li>
-                        <li class="search_sub"><a href="#">口腔护理</a></li>
-                        <li class="search_sub"><a href="#">颈部护理</a></li>
-                        <li class="search_sub"><a href="#">身体护理套装</a></li>
+                        <li class="search_sub"><a href="#/fenye?25">个人护理</a></li>
+                        <li class="search_sub"><a href="#/fenye?26">润肤</a></li>
+                        <li class="search_sub"><a href="#/fenye?27">纤体/美体</a></li>
+                        <li class="search_sub"><a href="#/fenye?28">手足护理</a></li>
+                        <li class="search_sub"><a href="#/fenye?29">护发</a></li>
+                        <li class="search_sub"><a href="#/fenye?30">沐浴</a></li>
+                        <li class="search_sub"><a href="#/fenye?31">洗发</a></li>
+                        <li class="search_sub"><a href="#/fenye?32">美发造型</a></li>
+                        <li class="search_sub"><a href="#/fenye?33">口腔护理</a></li>
+                        <li class="search_sub"><a href="#/fenye?34">颈部护理</a></li>
+                        <li class="search_sub"><a href="#/fenye?35">身体护理套装</a></li>
                     </ul>
                 </li>
                 <li class="search_link" @click="show(3)"><span :style="{color:num==3&&bool?'#fe4070':'#666'}">香水<img :src="num==3&&bool?imgg2:img1" alt=""></span>
                     <ul class="search_subs" v-show="num==3&&bool">
-                        <li class="search_sub"><a href="#">女士香水</a></li>
-                        <li class="search_sub"><a href="#">香水套装</a></li>
-                        <li class="search_sub"><a href="#">男士香水</a></li>
-                        <li class="search_sub"><a href="#">中性香水</a></li>
-                        <li class="search_sub"><a href="#">Q版香水</a></li>
+                        <li class="search_sub"><a href="#/fenye?36">女士香水</a></li>
+                        <li class="search_sub"><a href="#/fenye?37">香水套装</a></li>
+                        <li class="search_sub"><a href="#/fenye?38">男士香水</a></li>
+                        <li class="search_sub"><a href="#/fenye?39">中性香水</a></li>
+                        <li class="search_sub"><a href="#/fenye?40">Q版香水</a></li>
                     </ul>
                 </li>
                 <li class="search_link" @click="show(4)"><span :style="{color:num==4&&bool?'#fe4070':'#666'}">男士护理<img :src="num==4&&bool?imgg2:img1" alt=""></span>
                     <ul class="search_subs" v-show="num==4&&bool">
-                        <li class="search_sub"><a href="#">男士护肤</a></li>
-                        <li class="search_sub"><a href="#">男士身体护理</a></li>
-                        <li class="search_sub"><a href="#">男士套装</a></li>
+                        <li class="search_sub" @click="change"><a href="#/fenye?41">男士护肤</a></li>
+                        <li class="search_sub" @click="change"><a href="#/fenye?42">男士身体护理</a></li>
+                        <li class="search_sub" @click="change"><a href="#/fenye?43">男士套装</a></li>
                     </ul>
                 </li>
                 <li class="search_link" @click="show(5)"><span :style="{color:num==5&&bool?'#fe4070':'#666'}">套装礼盒<img :src="num==5&&bool?imgg2:img1" alt=""></span>
                     <ul class="search_subs" v-show="num==5&&bool">
-                        <li class="search_sub"><a href="#">小样/旅行套装</a></li>
+                        <li class="search_sub" @click="change"><a href="#/fenye?44">小样/旅行套装</a></li>
                     </ul>
                 </li>
                 <li class="search_link" @click="show(6)"><span :style="{color:num==6&&bool?'#fe4070':'#666'}">美容工具<img :src="num==6&&bool?imgg2:img1" alt=""></span>
                     <ul class="search_subs" v-show="num==6&&bool">
-                        <li class="search_sub"><a href="#">护肤工具</a></li>
-                        <li class="search_sub"><a href="#">彩妆工具</a></li>
-                        <li class="search_sub"><a href="#">美发工具</a></li>
-                        <li class="search_sub"><a href="#">美体工具</a></li>
-                        <li class="search_sub"><a href="#">美甲工具</a></li>
-                        <li class="search_sub"><a href="#">其他美容工具</a></li>
+                        <li class="search_sub" @click="change"><a href="#/fenye?40">护肤工具</a></li>
+                        <li class="search_sub" @click="change"><a href="#/fenye?37">彩妆工具</a></li>
+                        <li class="search_sub" @click="change"><a href="#/fenye?0">美发工具</a></li>
+                        <li class="search_sub" @click="change"><a href="#/fenye?11">美体工具</a></li>
+                        <li class="search_sub" @click="change"><a href="#/fenye?24">美甲工具</a></li>
+                        <li class="search_sub" @click="change"><a href="#/fenye?35">其他美容工具</a></li>
                     </ul>
                 </li>
-                <li class="search_link" @click="show(7)"><span :style="{color:num==7&&bool?'#fe4070':'#666'}">其他<img :src="num==7&&bool?imgg2:img1" alt=""></span>
-                    <ul class="search_subs" v-show="num==7&&bool">
-                        <li class="search_sub"><a href="#">喜从盒来</a></li>
-                        <li class="search_sub"><a href="#">会员生日礼包</a></li>
-                    </ul>
-                </li>
+                <!--<li class="search_link" @click="show(7)"><span :style="{color:num==7&&bool?'#fe4070':'#666'}">其他<img :src="num==7&&bool?imgg2:img1" alt=""></span>-->
+                    <!--<ul class="search_subs" v-show="num==7&&bool">-->
+                        <!--<li class="search_sub"><a href="#">喜从盒来</a></li>-->
+                        <!--<li class="search_sub"><a href="#">会员生日礼包</a></li>-->
+                    <!--</ul>-->
+                <!--</li>-->
             </ul>
         </div>
     </div>
@@ -119,6 +119,9 @@
             showSearch3(){
                  this.$store.state.isShow2=true
             },
+            change(){
+                this.$store.state.isShow = false;
+            }
 
         },
         computed: {
@@ -214,6 +217,7 @@
     .search_subs li a {
         font-size: 0.14rem;
         color: #777;
+        display: block;
     }
 
 </style>
