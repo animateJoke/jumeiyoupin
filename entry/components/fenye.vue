@@ -2,8 +2,8 @@
     <div id="search">
         <div id="fenye">
             <div class="top">
-                <img src="../img/left_arrow.png" alt="" class="left">
-                <img src="../img/home.png" alt="" class="right">
+                <a href="#" @click="goBack"><img src="../img/left_arrow.png" alt="" class="left"></a>
+                <a href="#/home/index1/index2"><img src="../img/home.png" alt="" class="right"></a>
             </div>
             <div class="nav">
                 <ol class="ll">
@@ -30,25 +30,23 @@
                 </ol>
             </div>
 
-            <ul class="liebiao">
-                <li>
-                    <div class="nox">
-                        <img src="../img/p.jpg" alt="" class="pic">
-                        <img src="../img/free.jpg" alt="" class="pic1">
-                    </div>
-                    <div class="r">
-                        <h4>AHC五代保湿紧致修护眼霜60ml</h4>
-                        <h5>1219人已购买</h5>
-                        <p><span>￥118</span></p>
-                    </div>
-                </li>
-            </ul>
+            <div class="list1">
+                <a v-for="(a,index) in arr5" :style="{background:'url('+JSON.parse(a.g_img)['320']+') no-repeat'}" :href="'#/info?g_id='+index">
+                    <div><p v-text="a.g_name"></p></div>
+                    <p>
+                        <span class="price">￥<i v-text="a.g_price"></i></span>
+                        <span class="oldprice">￥<i v-text="a.g_oldprice"></i></span>
+                    </p>
+                    <p v-text="a.g_product_desc" class="desc"></p>
+                </a>
+            </div>
         </div>
     </div>
 
 </template>
 
 <script>
+    import $ from "jquery"
     export default {
         data(){
             return {
@@ -59,19 +57,38 @@
                 arr:["全部","伊蒂之屋","韩熙贞","玛丽黛佳","MISTINE","伊势半","爱丽小屋","得鲜","井田","卡姿兰","谜尚","托尼魅力","净颜小筑","悦诗风吟","思薇娜"],
                 arr1:["全部","眼线笔","眼影","眼线液","眼线膏/胶"],
                 arr3:["全部","眼部造型","不易脱妆","持久","装扮","防晕染","修饰","易卸妆","防水","定妆","修容","遮瑕","温和","保湿","滋润"],
-                arr4:["全部","1-49","50-99","100-199","200-299","300-399","400-599","600-799","800以上"]
+                arr4:["全部","1-49","50-99","100-199","200-299","300-399","400-599","600-799","800以上"],
+                arr5:[]
             }
         },
         methods:{
             show(num){
-                this.num = num
+                this.num = num;
                 this.bool = !this.bool
+            },
+            goBack(){
+                window.history.back()
             }
         },
         watch:{
             num(){
                 this.bool=true
             }
+        },
+        mounted:function(){
+            var self=this;
+           var p_id=window.location.href.split("?")[1];
+
+            $.ajax({
+                url:"http://localhost:55555/home/fenye",
+                type:"POST",
+                data:{
+                    id:p_id
+                }
+            }).then(function (res) {
+                self.arr5=res
+
+            })
         }
     }
 </script>
@@ -147,46 +164,37 @@
     .ll li{
         float: left;
     }
-    .liebiao li{
-        height: 1.24rem;
-        border-bottom:1px solid #e3e3e4 ;
-        padding: .12rem;
-        box-sizing: border-box;
-        overflow: hidden;
+
+    .list1{
+        padding-bottom:.5rem;
     }
-    .liebiao li .pic{
-        width: 1rem;
-        height: 1rem;
+    .list1 a{
+        display:block;
+        box-sizing:border-box;
+        padding-left:1.6rem;
+        height:1.5rem;
+        line-height:.2rem;
+        background-size:cover;
+        border-bottom: 1px solid #e3e3e4;
     }
-    .nox{
-        width: 1rem;
-        height: 1rem;
-        position: relative;
-        float: left;
-        margin-right: 0.1rem;
+    .list1 a div{
+        padding-top:.3rem;
+        height:.7rem;
     }
-    .r{
-        float: left;
+    .list1 a div p{
+        color:#666
     }
-    .r h4{
-        font-size: .14rem;
-        color: #595959;
+    .price{
+        color:red;
     }
-    .r p{
-        color: #fe4070;
-        font-size: 0.14rem;
-        margin-top: .2rem;
+    .price i,.oldprice i{
+        font-size:20px;
     }
-    h5{
-        color: #9f9f9f;
-        font-size: .12rem;
-        margin-top: .24rem;
+    .oldprice{
+        color:#ccc;
+        text-decoration:line-through;
     }
-    .pic1{
-        width: .3rem;
-        height: .23rem;
-        position: absolute;
-        left: 0;
-        top: 0;
+    .desc{
+        color:#ccc;
     }
 </style>

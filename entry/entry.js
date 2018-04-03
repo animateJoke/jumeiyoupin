@@ -5,7 +5,6 @@ require("./css/iconfont/iconfont.css");
 
 import $ from "jquery"
 import getAjax from "./ajax.js"
-import getAjax1 from "./ajax1.js"
 
 //状态管理
 import Vuex from 'vuex'
@@ -144,13 +143,13 @@ new Vue({
     store,
     beforeCreate(){
 
-        getAjax(this.$store.state.num,function(arr){
+        getAjax("http://localhost:55555/home/list",this.$store.state.num,function(arr){
             this.$store.state.list =this.$store.state.list.concat(arr);
         }.bind(this));
-        getAjax(this.$store.state.numFree,function(arr){
+        getAjax("http://localhost:55555/home/list",this.$store.state.numFree,function(arr){
             this.$store.state.freeList =this.$store.state.freeList.concat(arr);
         }.bind(this));
-        getAjax1(this.$store.state.num1,function(arr){
+        getAjax("http://localhost:55555/group/good",this.$store.state.num1,function(arr){
             this.$store.state.list1 =this.$store.state.list1.concat(arr);
         }.bind(this))
         
