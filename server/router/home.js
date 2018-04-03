@@ -5,15 +5,15 @@ const request = require("request");
 var cheerio = require('cheerio');
 
 
-router.post('/test', function(req, res, next){
+/*router.post('/test', function(req, res, next){
     res.append("Access-Control-Allow-Origin", "*");
     request.get({
         url : "http://h5.jumei.com/product/ajaxStaticDetail?item_id="+req.body.id+"&type="+req.body.type
     }, function optionalCallback(err, httpResponse, body){
-        /*setTimeout(function(){
+        /!*setTimeout(function(){
             var $=cheerio.load("body");
             console.log($(".swiper-wrapper img"));
-        },1000)*/
+        },1000)*!/
         // console.log(body.data);
         var obj=JSON.parse(body).data;
         var arr=[];
@@ -51,31 +51,41 @@ router.post('/test', function(req, res, next){
 router.get('/test1', function(req, res, next){
     res.append("Access-Control-Allow-Origin", "*");
     request.get({
-        /*url : "http://m.jumei.com/product/ajaxDynamicDetail?item_id="+req.body.id+"&type="+req.body.type*/
+        /!*url : "http://m.jumei.com/product/ajaxDynamicDetail?item_id="+req.body.id+"&type="+req.body.type*!/
         url:"http://m.jumei.com/product/ajaxDynamicDetail?item_id=4085286&type=jumei_mall"
     }, function optionalCallback(err, httpResponse, body){
-        /*setTimeout(function(){
+        /!*setTimeout(function(){
             var $=cheerio.load("body");
             console.log($(".swiper-wrapper img"));
-        },1000)*/
-        /*// console.log(body.data);
+        },1000)*!/
+        /!*!// console.log(body.data);
 
         var data={};
         data.g_imgList=[];
         for(var i=0; i<obj.image_url_set.single_many.length; i++){
             data.g_imgList[i]=obj.image_url_set.single_many[i]["320"]
         };
-        data.g_html=obj.description_info.description+obj.description_info.description_images+obj.description_info.description_usage;*/
+        data.g_html=obj.description_info.description+obj.description_info.description_images+obj.description_info.description_usage;*!/
         var obj=JSON.parse(body).data;
         res.json(obj)
 
     })
     // res.send(1);
-    /*var str = "insert into `list` set ?";
+    /!*var str = "insert into `list` set ?";
     mysql(str, req.body, function(results){
 
-    })*/
+    })*!/
 });
+router.post('/test2', function(req, res, next){
+    res.append("Access-Control-Allow-Origin", "*");
+    var num = parseInt(Math.random()*45)
+    var str = "UPDATE LIST SET p_id=? WHERE g_id=?"
+    mysql(str,[num,req.body.id],function(){
+        res.send("ok")
+    })
+
+});*/
+
 router.post('/list', function(req, res, next){
     res.append("Access-Control-Allow-Origin", "*");
     var str = "select * from `list` order by g_id desc LIMIT ?,20";
@@ -83,6 +93,15 @@ router.post('/list', function(req, res, next){
         res.json(results)
     })
 });
+router.post('/info', function(req, res, next){
+    res.append("Access-Control-Allow-Origin", "*");
+    var str = "select * from `list` where g_id=?";
+    mysql(str, [req.body.id], function(results){
+        res.json(results)
+    })
+});
+
+
 router.get('/job', function(req, res, next){
     res.append("Access-Control-Allow-Origin", "*");
     var str = "select * from `job` where j_status=1 order by j_id desc LIMIT ?,7";
