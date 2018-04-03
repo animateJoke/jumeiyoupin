@@ -21,6 +21,7 @@
 </template>
 
 <script>
+    import $ from "jquery"
     export default {
         data(){
             return {
@@ -31,6 +32,26 @@
             fn(str){
                 this.index=str
             }
+        },
+        mounted(){
+            $(document).on("scroll",function(){
+                if($(this).scrollTop()>$(".search").height()){
+                    $(".nav").css({
+                        position:'fixed',
+                        top:0
+                    });
+                    $(".search").css({
+                        marginBottom:$(".nav").height()
+                    })
+                }else {
+                    $(".search").css({
+                        marginBottom:0
+                    })
+                    $(".nav").css({
+                        position:'static'
+                    });
+                }
+            })
         }
     }
 </script>
@@ -40,9 +61,10 @@
         display:none;
     }
     .nav{
+        background-color:#fff;
         width:100%;
         overflow:auto;
-        border-bottom:.01rem solid #ccc;
+        border-bottom:.01rem solid #eee;
     }
     .nav ul{
         width:150%;

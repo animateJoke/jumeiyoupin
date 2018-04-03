@@ -46,10 +46,11 @@ const store = new Vuex.Store({
 
     state: {
         num:0,
-
+        numFree:0,
         num1:0,
   
         list:[],
+        freeList:[],
         list1:[],
         
         isShow:false,
@@ -136,7 +137,10 @@ new Vue({
 
         getAjax(this.$store.state.num,function(arr){
             this.$store.state.list =this.$store.state.list.concat(arr);
-        }.bind(this)),
+        }.bind(this));
+        getAjax(this.$store.state.numFree,function(arr){
+            this.$store.state.freeList =this.$store.state.freeList.concat(arr);
+        }.bind(this));
         getAjax1(this.$store.state.num1,function(arr){
             this.$store.state.list1 =this.$store.state.list1.concat(arr);
         }.bind(this))

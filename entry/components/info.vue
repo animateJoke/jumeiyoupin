@@ -77,7 +77,7 @@
             }
         },
         mounted(){
-            this.ele = $(".banner div")
+            this.ele = $(".banner div");
             var self = this;
             $.ajax({
                 url : "http://localhost:55555/home/info",
@@ -86,8 +86,7 @@
                     id : this.id
                 }
             }).then(function(res){
-//                console.log(res);
-                self.flag=true
+                self.flag=true;
                 self.obj = res[0]
             })
         }
@@ -135,8 +134,8 @@
     }
     .banner ol li{
         display:inline-block;
-        width:.15rem;
-        height:.15rem;
+        width:.1rem;
+        height:.1rem;
         background-color:#ccc;
         border-radius:50%;
         margin-left:.1rem;
