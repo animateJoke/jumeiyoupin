@@ -18,6 +18,8 @@ Vue.use(VueRouter);
 // 一级路由
 import home from "./components/home.vue";
 import info from "./components/info.vue";
+import register from "./components/register.vue";
+import login from "./components/login.vue";
 
 import ginfo from "./components/ginfo.vue";
 
@@ -40,14 +42,14 @@ import nav from "./components/home/group/nav.vue";
 import rmd from "./components/home/group/rmd.vue";
 
 
+
 const store = new Vuex.Store({
     //消息
 
     state: {
         num:0,
-
         num1:0,
-  
+ 
         list:[],
         list1:[],
         
@@ -120,6 +122,12 @@ const router = new VueRouter({
         path:"/fenye",
         component : fenye
 
+    },{
+    	path:"/register",
+        component : register
+    },{
+    	path:"/login",
+        component : login
     }]
 });
 new Vue({
