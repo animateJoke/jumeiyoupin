@@ -171,7 +171,7 @@
 	}
 </script>
 
-<style>
+<style scoped>
 	.ginfo{
 		background: #f5f5f5;
 		

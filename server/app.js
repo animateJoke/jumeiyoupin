@@ -18,5 +18,5 @@ app.use("/home",require("./router/home"));
 app.use("/group",require("./router/group"));
 app.use("/register",require("./router/register"));
 
-app.listen(55556);
+app.listen(55555);
 console.log("开启服务器");
