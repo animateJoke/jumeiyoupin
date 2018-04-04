@@ -70,7 +70,7 @@
             <a href="#/home/cart" class="cart"><i class="iconfont">&#xe600;</i>
                 <p>购物车</p>
             </a>
-            <a href="#" class="joinCart">加入购物车</a>
+            <a href="#" class="joinCart" @click="joinCart">加入购物车</a>
             <a href="#" class="buy">立即购买</a>
         </div>
     </div>
@@ -101,6 +101,13 @@
 
                 this.ele.scrollLeft(this.index * document.body.clientWidth);
                 console.log(this.index * document.body.clientWidth, this.ele.scrollLeft());
+            },
+            joinCart(){
+                if(this.$store.state.status == 0){
+                    window.location.href="#/login"
+                }else {
+
+                }
             }
         },
         mounted(){

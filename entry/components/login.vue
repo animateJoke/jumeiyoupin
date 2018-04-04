@@ -26,7 +26,6 @@
 		methods: {
 			login() {
 				var self = this;
-					
 				$.ajax({
 					type: "post",
 					url: "http://localhost:55556/register/login",
@@ -35,9 +34,9 @@
 						u_pwd: self.pwd
 					}
 				}).done((res) => {
-					console.log(res);
 					if(res.length==1){
-						    window.location.href="#/home/index1/index2"
+						    window.location.href="#/home/index1/index2";
+                        	self.$store.state.status = 1;
                         }else {
                             alert("账号或密码错误");
                         }

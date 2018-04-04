@@ -31,7 +31,7 @@
             </div>
 
             <div class="list1">
-                <a v-for="(a,index) in arr5" :style="{background:'url('+JSON.parse(a.g_img)['320']+') no-repeat'}" :href="'#/info?g_id='+index">
+                <a v-for="(a,index) in arr5" :style="{background:'url('+JSON.parse(a.g_img)['320']+') no-repeat'}" :href="'#/info?g_id='+a.g_id">
                     <div><p v-text="a.g_name"></p></div>
                     <p>
                         <span class="price">￥<i v-text="a.g_price"></i></span>
