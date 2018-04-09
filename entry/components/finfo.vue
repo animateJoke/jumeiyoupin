@@ -61,7 +61,7 @@
 		</div>
 		<div class="footer">
 			<ul>
-				<li class="back" @click="back"><首页</li>
+				<li class="back" @click="back"> < 首页 </li>
 				<li v-text="getList1?getList1.old_price:''"></li>
 				<li v-text="getList1?getList1.new_price+'包邮开团':''"></li>
 			</ul>

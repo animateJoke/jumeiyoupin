@@ -29,19 +29,19 @@
 					
 				$.ajax({
 					type: "post",
-					url: "http://localhost:55556/register/login",
+					url: "http://localhost:55555/register/login",
 					data: {
 						u_name: self.username,
 						u_pwd: self.pwd
 					}
 				}).done((res) => {
-					console.log(res);
 					if(res.length==1){
+                            sessionStorage.setItem('user',res[0].id);
 						    window.location.href="#/home/index1/index2"
                         }else {
                             alert("账号或密码错误");
                         }
-				})
+				});
 				return false;
 			}
 		}

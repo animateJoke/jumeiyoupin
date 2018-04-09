@@ -36,7 +36,7 @@
         </div>
         <div class="evaluate">
             <p class="top">买过的人这样说</p>
-            <div v-for="a in flag?obj.evaluate:[]" style="overflow:hidden;border-bottom:.01rem solid #ccc" class="evaluate_list">
+            <div v-for="a in flag?JSON.parse(obj.g_evaluate):[]" style="overflow:hidden;border-bottom:.01rem solid #ccc" class="evaluate_list">
                 <div style="overflow:hidden">
                     <i class="face" :style="{background:'url('+a.u_face+') no-repeat center'}"></i>
                     <div class="u_info">
@@ -70,19 +70,19 @@
             <a href="#/home/cart" class="cart"><i class="iconfont">&#xe600;</i>
                 <p>购物车</p>
             </a>
-            <a href="#" class="joinCart">加入购物车</a>
-            <a href="#" class="buy">立即购买</a>
+            <a href="javascript:void(0)" @click="joinCart" class="joinCart">加入购物车</a>
+            <a href="javascript:void(0)" class="buy">立即购买</a>
         </div>
     </div>
 </template>
 
 <script>
     import $ from "jquery"
-
+    require("../jquery.cookie");
     export default {
         data(){
             return {
-                id : window.location.href.split("?")[1].split("=")[1],
+                id : window.location.href.split("g_id=")[1],
                 ele : null,
                 index : 0,
                 obj : {},
@@ -100,7 +100,28 @@
                 this.index = Math.round(this.ele.scrollLeft() / document.body.clientWidth);
 
                 this.ele.scrollLeft(this.index * document.body.clientWidth);
-                console.log(this.index * document.body.clientWidth, this.ele.scrollLeft());
+
+            },
+            joinCart(){
+                if(sessionStorage.getItem('user')==null){
+                    var obj={
+                        g_id:this.id,
+                        num:1
+                    };
+                    $.cookie("cart",JSON.stringify(obj))
+                }else {
+                    $.ajax({
+                        url:"",
+                        type:"post",
+                        data:{
+                            g_id:this.id,
+                            num:1,
+                            u_id:sessionStorage.getItem('user')
+                        }
+                    }).then(function(res){
+                        console.log(res);
+                    })
+                }
             }
         },
         mounted(){
@@ -289,7 +310,8 @@
     }
     .footer .joinCart{
         background:linear-gradient(210deg, #ffcfdf, #fff1f6 98%);
-        color:#fe4070
+        color:#fe4070;
+        text-decoration:none;
     }
     .footer .buy{
         background:linear-gradient(142deg, #ff5593, #fe4070);
