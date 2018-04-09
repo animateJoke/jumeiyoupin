@@ -112,8 +112,19 @@
                         g_id:this.id,
                         num:1
                     };
-                    arr.push(obj);
+                    var flag=true;
+                    for(var i=0; i<arr.length; i++){
+                        if(arr[i].g_id==obj.g_id){
+                            arr[i].num=arr[i].num+obj.num;
+                            flag=false;
+                            break;
+                        }
+                    }
+                    if(flag){
+                        arr.push(obj);
+                    }
                     $.cookie("cart",JSON.stringify(arr))
+
                 }else {
                     console.log(1);
                     $.ajax({
