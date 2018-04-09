@@ -29,11 +29,10 @@
                 this.index=str
             }
         }
-
     }
 </script>
 
-<style scoped="">
+<style scoped>
     .footer{
         position:fixed;
         bottom:0;

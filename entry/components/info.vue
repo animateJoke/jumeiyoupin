@@ -68,7 +68,7 @@
                 <p>店铺</p>
             </a>
             <a href="#/home/cart" class="cart"><i class="iconfont">&#xe600;</i>
-                <p>购物车</p>
+                <p>购物车 <i></i></p>
             </a>
 
             <a href="javascript:void(0)" @click="joinCart" class="joinCart">加入购物车</a>
@@ -108,11 +108,27 @@
             joinCart(){
                 var arr=JSON.parse($.cookie("cart")||'[]');
                 if(sessionStorage.getItem('user')==null){
+                    this.obj.num=1;
                     var obj={
-                        g_id:this.id,
-                        num:1
-                    };
-                    arr.push(obj);
+                        g_img:this.obj.g_img,
+                        num:1,
+                        g_id:this.obj.g_id,
+                        g_price:this.obj.g_price,
+                        g_name:this.obj.g_name,
+                        g_title:this.obj.g_title,
+                    }
+                    var flag=true;
+                    for(var i=0; i<arr.length; i++){
+                        if(arr[i].g_id==obj.g_id){
+                            arr[i].num=arr[i].num+obj.num;
+                            flag=false;
+                            break;
+                        }
+                    }
+                    if(flag){
+                        arr.push(obj);
+                    }
+                    console.log(JSON.stringify(arr));
                     $.cookie("cart",JSON.stringify(arr))
                 }else {
                     console.log(1);
@@ -127,7 +143,6 @@
                     }).then(function(res){
                         console.log(res);
                     })
-
                 }
             }
         },

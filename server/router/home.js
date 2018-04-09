@@ -123,6 +123,15 @@ router.post("/cart", function(req, res, next) {
 	})
 });
 
+router.post("/getCart",function(req, res){
+    res.append("Access-Control-Allow-Origin", "*");
+    var str="select * from `cart` as a join `list` as b on a.g_id=b.g_id where u_id=?";
+    mysql(str,[req.body.u_id],function(results){
+        res.json(results)
+    })
+});
+
+
 router.post('/fenye', function(req, res, next) {
 	res.append("Access-Control-Allow-Origin", "*");
 	var str = "select * from `list` where p_id=" + req.body.id;

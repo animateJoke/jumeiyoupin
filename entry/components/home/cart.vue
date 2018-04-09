@@ -5,12 +5,12 @@
             购物车
             <a href="#/home/index1/index2"><img :src="src1" alt="" class="pic2"></a>
         </div>
-        <div class="main">
+        <div class="main" v-if="!list.length">
             <p>您的购物车中没有商品,请先去挑选心爱的商品吧!</p>
-            <a href="#" class="btn">去逛逛</a>
+            <a href="#/home/index1/index2" class="btn">去逛逛</a>
         </div>
 
-        <div class="carlist">
+        <div class="carlist" v-else>
             <div class="daojishi">
                 <p><span><img :src="src2" alt="" class="pic3"> 19:09:09 </span> 结算时间结束后, 商品可能被抢空, 请尽快结算</p>
             </div>
@@ -21,25 +21,21 @@
                     聚美优品发货
                 </div>
                 <ul>
-                    <li class="dd">
+                    <li class="dd" v-for="a in list" :style="{backgroundImage:'url('+JSON.parse(a.g_img)['320']+')'}" >
                         <div class="left">
-                            <span class="check1" @click="check(0)" :style="{backgroundImage:arr.indexOf(0)?'url('+src4+')':'url('+src5+')'}"></span>
-                            <img :src="src3" alt="" class="pic4">
+                            <span class="check1" @click="check(Number(a.g_id),Number(a.g_price*a.num))" :style="{backgroundImage:arr.indexOf(Number(a.g_id))==-1?'url('+src4+')':'url('+src5+')'}"></span>
                         </div>
 
-                        <div class="right">
-                            <p class="p">
-                                <span>[极速免税]</span>
-                                贝德玛深层舒妍卸妆水500ml
+                        <a class="right" :href="'#/info?g_id='+a.g_id">
+                            <p class="p" v-text="a.g_name">
                             </p>
-                            <p class="p2">
-                                500ml <span>x1</span>
+                            <p class="p2" v-html="a.g_title+' <span>x'+a.num+'</span>'">
                             </p>
                             <p class="p3">
-                                <span>￥66</span>
+                                <span v-text="'￥'+a.g_price*a.num"></span>
                                 <a href="#">删除</a>
                             </p>
-                        </div>
+                        </a>
                     </li>
                 </ul>
                 <div class="d1">
@@ -48,11 +44,11 @@
                 </div>
 
                 <div class="pay">
-                    <span class="check" @click="check" :style="{backgroundImage:bool?'url('+src4+')':'url('+src5+')'}"></span>
+                    <span class="check" @click="checkAll" :style="{backgroundImage:arr.length!=list.length?'url('+src4+')':'url('+src5+')'}"></span>
                     <span class="sp">全选</span>
                     <span class="sp2">合计</span>
-                    <span class="sp3">¥232</span>
-                    <a href="#" class="a1"> 去结算( <span>1</span> )</a>
+                    <span class="sp3" v-text="'￥'+price"></span>
+                    <a href="#" class="a1"> 去结算( <span v-text="arr.length"></span> )</a>
                 </div>
 
             </div>
@@ -61,6 +57,8 @@
 </template>
 
 <script>
+    import $ from "jquery";
+    require("../../jquery.cookie");
     export default {
         data() {
             return {
@@ -71,22 +69,63 @@
                 src4:require("../../img/check.png"),
                 src5:require("../../img/check1.png"),
                 bool:true,
-                arr:[]
+                arr:[],
+                list:[],
+                price:0
             }
         },
         methods:{
             goBack(){
                 window.history.back()
             },
-            check(num){
-                // this.bool=!this.bool
-                this.arr.indexOf(num)==-1?this.arr.push(num):this.arr.splice(this.arr.indexOf(num),1)
+            check(num,price){
+                if(this.arr.indexOf(num)==-1){
+                    this.arr.push(num);
+                    this.price+=price
+                }else {
+                    this.arr.splice(this.arr.indexOf(num),1);
+                    this.price-=price
+                }
+                console.log(this.arr);
+            },
+            checkAll(){
+                this.arr=[];
+                this.price=0
+                for(var i=0; i<this.list.length; i++){
+                    this.price+=this.list[i].g_price*this.list[i].num;
+                    this.arr.push(this.list[i].g_id)
+                }
+            }
+        },
+        mounted(){
+            if(sessionStorage.getItem("user")==null){
+                if(JSON.parse($.cookie("cart")||'[]').length==0){
+                }else {
+                    this.list=JSON.parse($.cookie("cart")||'[]');
+                }
+            }else {
+                var self=this;
+                $.ajax({
+                    url:"http://localhost:55555/home/getCart",
+                    type:"post",
+                    dataType:"json",
+                    data:{
+                        u_id:sessionStorage.getItem("user")
+                    }
+                }).then(function(res){
+                    self.list=res;
+                    console.log(res);
+                })
             }
         }
     }
 </script>
 
 <style scoped>
+    .cart{
+        overflow-y:auto;
+        margin-bottom:1rem;
+    }
     .head {
         height: .41rem;
         border-bottom: 1px solid #e3e3e4;
@@ -113,12 +152,12 @@
     }
 
     .main {
-        height: 5.72rem;
+        height: 100%;
         background: url("../../img/cart_03.jpg") no-repeat center 2.03rem;
         text-align: center;
         box-sizing: border-box;
         padding-top: 3rem;
-        display: none;
+        /*display: none;*/
     }
 
     .main p {
@@ -194,15 +233,19 @@
         background: url("../../img/check.png");
         background-size: .2rem;
         position: relative;
-        top: -.3rem;
+        top: .3rem;
     }
 
     .dd {
-        padding: 0 .08rem;
-        height: 1.04rem;
+        padding: .08rem;
+        /*height: 1.04rem;*/
         border-bottom: 1px solid #e3e3e4;
-        background: #fff;
+        background-size: contain;
+        background-repeat:no-repeat;
+        background-color:#fff;
+        background-position:.1rem 0;
         overflow: hidden;
+        display:block;
     }
 
     .pic4 {
@@ -218,6 +261,7 @@
     .right {
         float: left;
         margin-top: .1rem;
+        padding-left:1.5rem;
     }
 
     .right .p {
@@ -269,11 +313,13 @@
         display: inline-block;
     }
     .pay{
-        margin-top: 2.22rem;
         height: .49rem;
+        width:100%;
+        box-sizing:border-box;
         background: #fff;
         padding: 0 .08rem;
-        margin-bottom: .5rem;
+        position:fixed;
+        bottom: .5rem;
         line-height: .49rem;
     }
     .sp{
