@@ -67,7 +67,7 @@
         border-bottom:.01rem solid #eee;
     }
     .nav ul{
-        width:150%;
+        width:110%;
         overflow:hidden;
     }
     .nav ul li{

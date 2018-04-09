@@ -75,16 +75,17 @@ router.get('/test1', function(req, res, next){
     mysql(str, req.body, function(results){
 
     })*!/
-});
+});*/
+/*
 router.post('/test2', function(req, res, next){
     res.append("Access-Control-Allow-Origin", "*");
-    var num = parseInt(Math.random()*45)
-    var str = "UPDATE LIST SET p_id=? WHERE g_id=?"
-    mysql(str,[num,req.body.id],function(){
+    var str = "INSERT INTO mom set ?";
+    mysql(str,req.body,function(){
         res.send("ok")
     })
 
-});*/
+});
+*/
 
 router.post('/list', function(req, res, next){
     res.append("Access-Control-Allow-Origin", "*");
@@ -93,22 +94,27 @@ router.post('/list', function(req, res, next){
         res.json(results)
     })
 });
+router.get('/mom', function(req, res, next){
+    res.append("Access-Control-Allow-Origin", "*");
+    var str = "select * from `mom`";
+    mysql(str, [], function(results){
+        res.json(results)
+    })
+});
+
+
 router.post('/info', function(req, res, next){
     res.append("Access-Control-Allow-Origin", "*");
     var str = "select * from `list` where g_id=?";
     mysql(str, [req.body.id], function(results){
-        res.json(results)
+        var str1 = "select * from `evaluate`";
+        mysql(str1, [], function(results1){
+            results[0].evaluate=results1
+            res.json(results)
+        })
     })
 });
 
-
-router.get('/job', function(req, res, next){
-    res.append("Access-Control-Allow-Origin", "*");
-    var str = "select * from `job` where j_status=1 order by j_id desc LIMIT ?,7";
-    mysql(str, [req.query.index * 7], function(results){
-        res.json(results)
-    })
-});
 
 router.post('/fenye', function(req, res, next){
     res.append("Access-Control-Allow-Origin", "*");

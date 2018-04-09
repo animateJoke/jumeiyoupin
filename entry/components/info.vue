@@ -25,7 +25,7 @@
             </p>
             <p><span v-if="obj&&obj.g_type" v-text="flag?obj.g_type:''" class="type"></span>
                 <span v-text="flag?obj.g_name:''" class="name"></span></p>
-            <p><span v-text="flag?obj.g_stages:''" class="stages"></span></p>
+            <p style="padding-top: .1rem;overflow:hidden"><span class="left">分期</span><span v-text="flag?obj.g_stages:''" class="stages"></span></p>
             <p style="padding-top: .1rem;overflow:hidden">
                 <span class="left">运费</span><span v-text="flag?obj.g_freight:''" class="freight"></span></p>
             <div style="padding-top: .1rem;overflow:hidden"><span class="left">说明</span>
@@ -35,7 +35,32 @@
             </div>
         </div>
         <div class="evaluate">
+            <p class="top">买过的人这样说</p>
+            <div v-for="a in flag?obj.evaluate:[]" style="overflow:hidden;border-bottom:.01rem solid #ccc" class="evaluate_list">
+                <div style="overflow:hidden">
+                    <i class="face" :style="{background:'url('+a.u_face+') no-repeat center'}"></i>
+                    <div class="u_info">
+                        <p v-text="a.u_name"></p>
+                        <p v-text="a.u_register_time"></p>
+                    </div>
+                </div>
+                <p style="line-height: .2rem;">
+                    <span v-for="b in JSON.parse(a.u_arr||'[]')" v-text="b.name" style="color:#507daf"></span>
+                    <span v-text="a.u_str"></span>
+                </p>
+                <p style="line-height: .28rem;">
+                    <span v-text="a.u_time" style="color:#a4a4a4"></span>&emsp;&emsp;<span style="color:#a4a4a4" v-text="a.u_bute"></span>
+                </p>
 
+                <div>
+                    <img v-for="c in JSON.parse(a.u_imgList||'[]')" :src="c.small_img" alt="" style="width:1.08rem;margin-right:.1rem">
+                </div>
+                <p style="text-align: right; line-height: .4rem;">
+                    <span><i class="iconfont">&#xe662;</i><i v-text="a.u_like" style="padding:0 .1rem"></i></span>
+                    <span><i class="iconfont">&#xe609;</i><i v-text="a.u_reply" style="padding:0 .1rem"></i></span>
+                </p>
+            </div>
+            <p style="text-align: center;line-height: .44rem;">查看全部评价</p>
         </div>
         <div class="box" v-html="flag?obj.g_html:''"></div>
         <div class="footer">
@@ -45,7 +70,7 @@
             <a href="#/home/cart" class="cart"><i class="iconfont">&#xe600;</i>
                 <p>购物车</p>
             </a>
-            <a href="#" class="joinCart">加入购物车</a>
+            <a href="#" class="joinCart" @click="joinCart">加入购物车</a>
             <a href="#" class="buy">立即购买</a>
         </div>
     </div>
@@ -61,7 +86,7 @@
                 ele : null,
                 index : 0,
                 obj : {},
-                flag:false
+                flag : false
             }
         },
         methods : {
@@ -76,6 +101,13 @@
 
                 this.ele.scrollLeft(this.index * document.body.clientWidth);
                 console.log(this.index * document.body.clientWidth, this.ele.scrollLeft());
+            },
+            joinCart(){
+                if(this.$store.state.status == 0){
+                    window.location.href="#/login"
+                }else {
+
+                }
             }
         },
         mounted(){
@@ -88,7 +120,8 @@
                     id : this.id
                 }
             }).then(function(res){
-                self.flag=true;
+                self.flag = true;
+                console.log(res[0]);
                 self.obj = res[0]
             })
         }
@@ -197,6 +230,35 @@
         float:left;
         padding-left:.2rem;
         line-height:.3rem;
+    }
+    .evaluate{
+        padding:.1rem;
+        background-color:#fff;
+        margin-bottom:.1rem;
+    }
+    .evaluate .top{
+        line-height:.5rem;
+        border-bottom:.01rem solid #eee;
+    }
+    .evaluate_list{
+        padding-top:.2rem;
+    }
+    .evaluate .face{
+        float:left;
+        width:.3rem;
+        height:.3rem;
+        border-radius:50%;
+    }
+    .evaluate .u_info{
+        float:left;
+        padding-left:.1rem;
+        line-height:.18rem;
+    }
+    .evaluate .u_info p:nth-child(1){
+        color:#333;
+    }
+    .evaluate .u_info p:nth-child(2){
+        color:#ccc;
     }
     .box{
         width:3.75rem;

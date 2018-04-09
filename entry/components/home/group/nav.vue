@@ -1,61 +1,89 @@
 <template>
 	<div class="nav">
 		<ul>
-			<li>
-				<a href="#/home/group/rmd">推荐</a>
+			<li >
+				<a href="#/home/group/rmd" @click="fn('rmd')" :class="{'current':index=='rmd'}">推荐</a>
 			</li>
 			<li>
-				<a href="#/home/index1/free">母婴健康</a>
+				<a href="#/home/group/mama" @click="fn('mama')" :class="{'current':index=='mama'}">母婴健康</a>
 			</li>
 			<li>
-				<a href="#/home/index1/mom">美妆</a>
+				<a href="#/home/group/beauti" @click="fn('beauti')" :class="{'current':index=='beauti'}">美妆</a>
 			</li>
 			<li>
-				<a href="#/home/index1/luxurious">家居</a>
+				<a href="#/home/group/jiaju" @click="fn('jiaju')" :class="{'current':index=='jiaju'}">家居</a>
 			</li>
 			<li>
-				<a href="#/home/index1/brand">食品保健</a>
+				<a href="#/home/group/food" @click="fn('food')" :class="{'current':index=='food'}">食品保健</a>
 			</li>
 			<li>
-				<a href="#/home/index1/brand">内衣</a>
+				<a href="#/home/group/rmd">内衣</a>
 			</li>
 			<li>
-				<a href="#/home/index1/brand">饰品配饰</a>
+				<a href="#/home/group/rmd">饰品配饰</a>
 			</li>
 			<li>
-				<a href="#/home/index1/brand">女装</a>
+				<a href="#/home/group/rmd">女装</a>
 			</li>
 			<li>
-				<a href="#/home/index1/brand">鞋类</a>
+				<a href="#/home/group/rmd">鞋类</a>
 			</li>
 			<li>
-				<a href="#/home/index1/brand">数码家电</a>
+				<a href="#/home/group/rmd">数码家电</a>
 			</li>
 			<li>
-				<a href="#/home/index1/brand">礼品箱包</a>
+				<a href="#/home/group/rmd">礼品箱包</a>
 			</li>
 			<li>
-				<a href="#/home/index1/brand">运动户外</a>
+				<a href="#/home/group/rmd">运动户外</a>
 			</li>
 			<li>
-				<a href="#/home/index1/brand">下期预告</a>
+				<a href="#/home/group/rmd">下期预告</a>
 			</li>
 		</ul>
 	</div>
 </template>
 
 <script>
-	
+	import $ from "jquery"
+    export default {
+        data(){
+            return {
+                index:window.location.href.split("group")[1].split("/")[1]
+            }
+        },
+        methods:{
+            fn(str){
+                this.index=str
+            }
+        },
+        mounted(){
+            $(document).on("scroll",function(){
+                if($(this).scrollTop()>45){
+                    $(".nav").css({
+                        position:'fixed',
+                        top:0
+                    });
+                    
+                }else {
+                    
+                    $(".nav").css({
+                        position:'static'
+                    });
+                }
+            })
+        }
+    }
 </script>
 
-<style scoped="">
+<style scoped>
     .nav::-webkit-scrollbar{
         display:none;
     }
     .nav{
         width:100%;
         height:45px;
-        border: solid 1px #eee;
+        
         background: white;
         overflow:auto;
     }
@@ -71,6 +99,15 @@
         
     }
     .nav ul li a{
+    	height:43px;
+    	display: block;
     	color: #666;
+    	text-decoration: none;
+    }
+    .nav .current{
+    	
+		color: #FF4070;
+		border-bottom: solid 2px #ff4070;
+	
     }
 </style>

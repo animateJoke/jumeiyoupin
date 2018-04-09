@@ -63,8 +63,11 @@
     .price{
         color:red;
     }
-    .price i,.oldprice i{
-        font-size:20px;
+    .price i{
+        font-size:.2rem;
+    }
+    .oldprice i{
+        font-size:.14rem;
     }
     .oldprice{
         color:#ccc;
