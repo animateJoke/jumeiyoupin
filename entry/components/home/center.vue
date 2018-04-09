@@ -131,6 +131,7 @@
         methods:{
             esc(){
                 sessionStorage.clear();
+                this.bool = true
             }
         }
     }
