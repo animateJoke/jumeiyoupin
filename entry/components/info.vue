@@ -117,6 +117,7 @@
                         g_name:this.obj.g_name,
                         g_title:this.obj.g_title,
                     }
+
                     var flag=true;
                     for(var i=0; i<arr.length; i++){
                         if(arr[i].g_id==obj.g_id){
@@ -128,8 +129,9 @@
                     if(flag){
                         arr.push(obj);
                     }
-                    console.log(JSON.stringify(arr));
+
                     $.cookie("cart",JSON.stringify(arr))
+
                 }else {
                     console.log(1);
                     $.ajax({

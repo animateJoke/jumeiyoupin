@@ -1,191 +1,143 @@
 <template>
-	<div style="width: 100%;height: 100%;background: #f2f2f2;">
-		<div class="header">
-			<a href="#">
-				<</a>
-					<a href="#">我的聚美</a>
-					<i class="iconfont">&#xe66c;</i>
-		</div>
-		<div class="login">
-			<img src="../../img/default.png" />
-			<ul>
-				<li>
-					<a href="#/register">注册</a>
-				</li>
-				<li>|</li>
-				<li>
-					<a href="#/login">登录</a>
-				</li>
-			</ul>
-		</div>
-		<div class="goods">
-			<div class="goods_top">
-				<i class="iconfont">&#xe648;</i>
-				<p>我的订单</p>
-				<a href="#">查看我的全部订单&nbsp;&nbsp;&nbsp;&gt;</a>
-			</div>
-			<div class="goods_bottom">
-				<ul>
-					<li>
-						<a href="#">
-							<i class="iconfont">&#xe607;</i>
-							<p>待付款</p>
-						</a>
-					</li>
-					<li>
-						<a href="#">
-							<i class="iconfont">&#xe66a;</i>
-							<p>待收货</p>
-						</a>
-					</li>
-					<li>
-						<a href="#">
-							<i class="iconfont">&#xe639;</i>
-							<p>待评价</p>
-						</a>
-					</li>
-					<li>
-						<a href="#">
-							<i class="iconfont">&#xe60f;</i>
-							<p>退货/退款</p>
-						</a>
-					</li>
-				</ul>
-			</div>
-		</div>
-		<div class="money">
-			<div class="money_top">
-				<i class="iconfont">&#xe60d;</i>
-				<p>我的资产</p>
-			</div>
-			<ul>
-				<li>
-					<a href="#">现金券</a>
-				</li>
-				<li>
-					<a href="#">红包</a>
-				</li>
-				<li>
-					<a href="#">聚美余额</a>
-				</li>
-				<li>
-					<a href="#">礼品卡</a>
-				</li>
-			</ul>
-		</div>
-		<ul class="items">
-			<li>
-				<a href="#">
-					<i class="iconfont">&#xe608;</i>
-					<p>售后服务</p>
-					<span>&gt;</span>
-				</a>
-			</li>
-			<li>
-				<a href="#">
-					<i class="iconfont">&#xe63c;</i>
-					<p>意见反馈</p>
-					<span>&gt;</span>
-				</a>
-			</li>
-			<li>
-				<a href="#">
-					<i class="iconfont">&#xe66a;</i>
-					<p>收货地址</p>
-					<span>&gt;</span>
-				</a>
-			</li>
-			<li>
-				<a href="#">
-					<i class="iconfont">&#xe61b;</i>
-					<p>聚美专柜形象大使</p>
-					<span>&gt;</span>
-				</a>
-			</li>
-			<li>
-				<a href="#">
-					<i class="iconfont">&#xe643;</i>
-					<p>退出登录</p>
-					<span>&gt;</span>
-				</a>
-			</li>
-			<li>
-				<a href="#">
-					<i class="iconfont">&#xe61c;</i>
-					<p>400-123-8888</p>
-					<span>&gt;</span>
-				</a>
-			</li>
-		</ul>
-		<div class="text">
-			<p>客服热线400-123-8888 (8:00-22:00)<br />拨打前请记录您的UID 0 </p>
-		</div>
-	</div>
+
+    <div style="width: 100%;height: 100%;background: #f2f2f2;">
+        <centerh1 v-if="bool"></centerh1>
+        <xheader v-else></xheader>
+        <div class="goods">
+            <div class="goods_top">
+                <i class="iconfont">&#xe648;</i>
+                <p>我的订单</p>
+                <a href="#">查看我的全部订单&nbsp;&nbsp;&nbsp;&gt;</a>
+            </div>
+            <div class="goods_bottom">
+                <ul>
+                    <li>
+                        <a href="#">
+                            <i class="iconfont">&#xe607;</i>
+                            <p>待付款</p>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <i class="iconfont">&#xe66a;</i>
+                            <p>待收货</p>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <i class="iconfont">&#xe639;</i>
+                            <p>待评价</p>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <i class="iconfont">&#xe60f;</i>
+                            <p>退货/退款</p>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="money">
+            <div class="money_top">
+                <i class="iconfont">&#xe60d;</i>
+                <p>我的资产</p>
+            </div>
+            <ul>
+                <li>
+                    <a href="#">现金券</a>
+                </li>
+                <li>
+                    <a href="#">红包</a>
+                </li>
+                <li>
+                    <a href="#">聚美余额</a>
+                </li>
+                <li>
+                    <a href="#">礼品卡</a>
+                </li>
+            </ul>
+        </div>
+        <ul class="items">
+            <li>
+                <a href="#">
+                    <i class="iconfont">&#xe608;</i>
+                    <p>售后服务</p>
+                    <span>&gt;</span>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <i class="iconfont">&#xe63c;</i>
+                    <p>意见反馈</p>
+                    <span>&gt;</span>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <i class="iconfont">&#xe66a;</i>
+                    <p>收货地址</p>
+                    <span>&gt;</span>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <i class="iconfont">&#xe61b;</i>
+                    <p>聚美专柜形象大使</p>
+                    <span>&gt;</span>
+                </a>
+            </li>
+            <li>
+                    <i class="iconfont">&#xe643;</i>
+                    <p @click="esc">退出登录</p>
+                    <span>&gt;</span>
+            </li>
+            <li>
+                <a href="#">
+                    <i class="iconfont">&#xe61c;</i>
+                    <p>400-123-8888</p>
+                    <span>&gt;</span>
+                </a>
+            </li>
+        </ul>
+        <div class="text">
+            <p>客服热线400-123-8888 (8:00-22:00)<br/>拨打前请记录您的UID 0 </p>
+        </div>
+    </div>
 </template>
 
 <script>
+    import centerh1 from "./center-h1.vue";
+    import xheader from "./header.vue";
+    export default {
+        data() {
+            return {
+                bool: true
+
+            }
+        },
+        components: {
+            centerh1,
+            xheader
+        },
+        mounted() {
+            if (sessionStorage.getItem("user")==null) {
+                this.bool = true
+            }else {
+                this.bool = false
+            }
+            console.log(this.bool);
+        },
+        methods:{
+            esc(){
+                sessionStorage.clear();
+            }
+        }
+    }
+
 </script>
 
 <style scoped="scoped">
-	.header {
-		width: 100%;
-		height: 0.38rem;
-		background: #fd4d71;
-		display: flex;
-		justify-content: space-between;
-		align-items: center;
-		font-size: 0.16rem;
-		color: white;
-	}
-	
-	.header i {
-		margin-right: 0.1rem;
-		font-size: 0.30rem;
-	}
-	
-	.header a {
-		text-decoration: none;
-		color: white;
-	}
-	
-	.header a:first-child {
-		margin-left: 0.1rem;
-		font-size: 0.30rem;
-	}
-	
-	.login {
-		width: 100%;
-		height: 1.58rem;
-		background: #fd4d71;
-		margin-top: -0.01rem;
-		text-align: center;
-	}
-	
-	.login img {
-		width: 0.7rem;
-		margin-top: 0.3rem;
-	}
-	
-	.login ul {
-		width: 100%;
-		display: flex;
-		margin-top: 0.15rem;
-		justify-content: center;
-	}
-	
-	.login ul li {
-		width: 0.5rem;
-		float: left;
-		font-size: 0.2rem;
-		font-weight: 600;
-		color: white;
-	}
-	
-	.login ul li a {
-		text-decoration: none;
-		color: white;
-	}
-	
 	.goods {
 		width: 100%;
 		height: 1.06rem;
@@ -351,4 +303,5 @@
 		font-size: .12rem;
 		color: #999999;
 	}
+
 </style>
