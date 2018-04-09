@@ -29,7 +29,7 @@
         mounted(){
             var self=this;
             $.ajax({
-                url:"http://localhost:55555/home/mom",
+                url:"http://101.200.60.236:55555/home/mom",
                 type:"get"
             }).then(function(res){
                 self.arr=res;

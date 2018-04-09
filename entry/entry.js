@@ -166,6 +166,9 @@ const router = new VueRouter({
     },{
     	path:"/login",
         component : login
+    },{
+        path: '/',
+        redirect: '/home/index1/index2'
     }]
 });
 new Vue({
@@ -179,25 +182,25 @@ new Vue({
     store,
     beforeCreate(){
 
-        getAjax("http://localhost:55555/home/list",this.$store.state.num,function(arr){
+        getAjax("http://101.200.60.236:55555/home/list",this.$store.state.num,function(arr){
             this.$store.state.list =this.$store.state.list.concat(arr);
         }.bind(this));
-        getAjax("http://localhost:55555/home/list",this.$store.state.numFree,function(arr){
+        getAjax("http://101.200.60.236:55555/home/list",this.$store.state.numFree,function(arr){
             this.$store.state.freeList =this.$store.state.freeList.concat(arr);
         }.bind(this));
-        getAjax("http://localhost:55555/group/good",this.$store.state.num1,function(arr){
+        getAjax("http://101.200.60.236:55555/group/good",this.$store.state.num1,function(arr){
             this.$store.state.list1 =this.$store.state.list1.concat(arr);
         }.bind(this));
-        getAjax("http://localhost:55555/group/mama",this.$store.state.numMama,function(arr){
+        getAjax("http://101.200.60.236:55555/group/mama",this.$store.state.numMama,function(arr){
             this.$store.state.mama =this.$store.state.mama.concat(arr);
         }.bind(this));
-        getAjax("http://localhost:55555/group/beauti",this.$store.state.numBea,function(arr){
+        getAjax("http://101.200.60.236:55555/group/beauti",this.$store.state.numBea,function(arr){
             this.$store.state.beauti =this.$store.state.beauti.concat(arr);
         }.bind(this));
-        getAjax("http://localhost:55555/group/food",this.$store.state.numFod,function(arr){
+        getAjax("http://101.200.60.236:55555/group/food",this.$store.state.numFod,function(arr){
             this.$store.state.food =this.$store.state.food.concat(arr);
         }.bind(this));
-        getAjax("http://localhost:55555/group/jiaju",this.$store.state.numJj,function(arr){
+        getAjax("http://101.200.60.236:55555/group/jiaju",this.$store.state.numJj,function(arr){
             this.$store.state.jiaju =this.$store.state.jiaju.concat(arr);
         }.bind(this))
         

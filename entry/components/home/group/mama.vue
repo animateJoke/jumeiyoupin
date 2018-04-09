@@ -33,7 +33,7 @@
 		methods: {
 			jiazai() {
 				this.$store.state.numMama++;
-				getAjax("http://localhost:55555/group/mama", this.$store.state.numMama, function(arr) {
+				getAjax("http://101.200.60.236:55555/group/mama", this.$store.state.numMama, function(arr) {
 					this.$store.state.mama = this.$store.state.mama.concat(arr);
 				}.bind(this))
 			},

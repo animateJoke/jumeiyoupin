@@ -42,7 +42,7 @@
                 var self=this
                 $.ajax({
                     type:"POST",
-                    url:"http://localhost:55555/home/search",
+                    url:"http://101.200.60.236:55555/home/search",
                     data:{
                         name:self.name
                     }
@@ -64,7 +64,7 @@
         height: 10rem;
         padding: 0 .12rem;
         width: 100%;
-
+        overflow:auto;
     }
 
     .top {

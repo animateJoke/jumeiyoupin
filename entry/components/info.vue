@@ -135,7 +135,7 @@
                 }else {
                     console.log(1);
                     $.ajax({
-                        url:"http://localhost:55555/home/cart",
+                        url:"http://101.200.60.236:55555/home/cart",
                         type:"post",
                         data:{
                             g_id:this.id,
@@ -152,7 +152,7 @@
             this.ele = $(".banner div");
             var self = this;
             $.ajax({
-                url : "http://localhost:55555/home/info",
+                url : "http://101.200.60.236:55555/home/info",
                 type : "post",
                 data : {
                     id : this.id

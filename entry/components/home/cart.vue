@@ -95,7 +95,7 @@
 
                 if(sessionStorage.getItem("user") != null){
                     $.ajax({
-                        url : "http://localhost:55555/home/delCart",
+                        url : "http://101.200.60.236:55555/home/delCart",
                         type : "post",
                         data : {
                             g_id : g_id,
@@ -109,6 +109,14 @@
                             this.list.splice(i,1)
                         }
                     }
+                }else{
+                    for(var i=0; i<this.list.length; i++){
+                        if(this.list[i].g_id==g_id){
+                            this.list.splice(i,1)
+                        }
+                    }
+
+                    $.cookie("cart",JSON.stringify(this.list))
                 }
             }
         },
@@ -121,7 +129,7 @@
             } else {
                 var self = this;
                 $.ajax({
-                    url : "http://localhost:55555/home/getCart",
+                    url : "http://101.200.60.236:55555/home/getCart",
                     type : "post",
                     dataType : "json",
                     data : {

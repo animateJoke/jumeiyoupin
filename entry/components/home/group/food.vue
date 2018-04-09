@@ -34,7 +34,7 @@
 		methods: {
 			jiazai() {
 				this.$store.state.numFod++;
-				getAjax("http://localhost:55555/group/food", this.$store.state.numFod, function(arr) {
+				getAjax("http://101.200.60.236:55555/group/food", this.$store.state.numFod, function(arr) {
 					this.$store.state.food = this.$store.state.food.concat(arr);
 				}.bind(this))
 			},

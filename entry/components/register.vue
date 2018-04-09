@@ -65,7 +65,7 @@
 
 				if(this.flag2) {
 					$.ajax({
-						url: "http://localhost:55555/register",
+						url: "http://101.200.60.236:55555/register",
 						type: "post",
 						data: {
 							u_name: selff.username
@@ -90,7 +90,7 @@
 
 					$.ajax({
 						type: "post",
-						url: "http://localhost:55555/register/register",
+						url: "http://101.200.60.236:55555/register/register",
 						data: {
 							u_name: self.username,
 							u_pwd: self.pwd,

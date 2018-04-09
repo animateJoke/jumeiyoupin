@@ -52,7 +52,7 @@
         methods : {
             jiazai(){
                 this.$store.state.numFree++;
-                getAjax("http://localhost:55555/home/list",this.$store.state.numFree, function(arr){
+                getAjax("http://101.200.60.236:55555/home/list",this.$store.state.numFree, function(arr){
                     this.$store.state.freeList = this.$store.state.freeList.concat(arr);
                 }.bind(this))
             },

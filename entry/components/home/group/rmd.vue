@@ -36,7 +36,7 @@
         methods:{
             jiazai() {
                 this.$store.state.num1++;
-                getAjax("http://localhost:55555/group/good",this.$store.state.num1,function(arr){
+                getAjax("http://101.200.60.236:55555/group/good",this.$store.state.num1,function(arr){
                     this.$store.state.list1 =this.$store.state.list1.concat(arr);
                 }.bind(this))
             },

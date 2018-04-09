@@ -29,7 +29,7 @@
                 var self = this
                 $.ajax({
                     type: "post",
-                    url: "http://localhost:55555/register/login",
+                    url: "http://101.200.60.236:55555/register/login",
                     data: {
                         u_name: self.username,
                         u_pwd: self.pwd
@@ -43,7 +43,7 @@
 
                         for (var i = 0; i < cartlist.length; i++) {
                             $.ajax({
-                                url:"http://localhost:55555/home/cart",
+                                url:"http://101.200.60.236:55555/home/cart",
                                 type:"post",
                                 data:{
                                     g_id:cartlist[i].g_id,
@@ -52,7 +52,7 @@
                                 }
                             })
                         }
-                        $.cookie("cart",null)
+                        $.cookie("cart",'[]');
                         window.location.href = "#/home/index1/index2";
 
 

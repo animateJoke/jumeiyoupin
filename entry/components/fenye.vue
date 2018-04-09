@@ -80,7 +80,7 @@
            var p_id=window.location.href.split("?")[1];
 
             $.ajax({
-                url:"http://localhost:55555/home/fenye",
+                url:"http://101.200.60.236:55555/home/fenye",
                 type:"POST",
                 data:{
                     id:p_id
