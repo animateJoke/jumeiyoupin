@@ -106,7 +106,6 @@
 
             },
             joinCart(){
-                console.log(sessionStorage.getItem('user'));
                 var arr=JSON.parse($.cookie("cart")||'[]');
                 if(sessionStorage.getItem('user')==null){
                     var obj={

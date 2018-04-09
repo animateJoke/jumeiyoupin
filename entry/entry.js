@@ -70,7 +70,6 @@ const store = new Vuex.Store({
         jiaju:[],
         isShow:false,
         isShow2:false,
-        status:0
 
     },
     //获取值得方法

@@ -116,7 +116,6 @@
             change(){
                 this.$store.state.isShow = false;
             }
-
         },
         computed: {
             ss() {
@@ -131,7 +130,6 @@
                 this.bool=true
             }
         }
-
     }
 </script>
 

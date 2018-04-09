@@ -1,5 +1,4 @@
 <template>
-
 	<div style="width: 100%;height: 100%;">
 		<div class="header1">
 			<a href="#/home/center">

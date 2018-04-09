@@ -25,7 +25,7 @@
 		},
 		methods: {
 			login() {
-				var self = this;
+				var self = this
 				$.ajax({
 					type: "post",
 					url: "http://localhost:55555/register/login",
@@ -35,11 +35,9 @@
 					}
 				}).done((res) => {
 					if(res.length==1){
+
+						    window.location.href="#/home/index1/index2";
                             sessionStorage.setItem('user',res[0].id);
-
-
-
-						    window.location.href="#/home/index1/index2"
 
                         }else {
                             alert("账号或密码错误");
