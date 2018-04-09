@@ -36,7 +36,7 @@
         </div>
         <div class="evaluate">
             <p class="top">买过的人这样说</p>
-            <div v-for="a in flag?obj.evaluate:[]" style="overflow:hidden;border-bottom:.01rem solid #ccc" class="evaluate_list">
+            <div v-for="a in flag?JSON.parse(obj.g_evaluate):[]" style="overflow:hidden;border-bottom:.01rem solid #ccc" class="evaluate_list">
                 <div style="overflow:hidden">
                     <i class="face" :style="{background:'url('+a.u_face+') no-repeat center'}"></i>
                     <div class="u_info">
@@ -68,21 +68,23 @@
                 <p>店铺</p>
             </a>
             <a href="#/home/cart" class="cart"><i class="iconfont">&#xe600;</i>
-                <p>购物车</p>
+                <p>购物车 <i></i></p>
             </a>
-            <a href="#" class="joinCart" @click="joinCart">加入购物车</a>
-            <a href="#" class="buy">立即购买</a>
+
+            <a href="javascript:void(0)" @click="joinCart" class="joinCart">加入购物车</a>
+            <a href="javascript:void(0)" class="buy">立即购买</a>
+
         </div>
     </div>
 </template>
 
 <script>
     import $ from "jquery"
-
+    require("../jquery.cookie");
     export default {
         data(){
             return {
-                id : window.location.href.split("?")[1].split("=")[1],
+                id : window.location.href.split("g_id=")[1],
                 ele : null,
                 index : 0,
                 obj : {},
@@ -100,13 +102,49 @@
                 this.index = Math.round(this.ele.scrollLeft() / document.body.clientWidth);
 
                 this.ele.scrollLeft(this.index * document.body.clientWidth);
-                console.log(this.index * document.body.clientWidth, this.ele.scrollLeft());
+
+
             },
             joinCart(){
-                if(this.$store.state.status == 0){
-                    window.location.href="#/login"
-                }else {
+                var arr=JSON.parse($.cookie("cart")||'[]');
+                if(sessionStorage.getItem('user')==null){
+                    this.obj.num=1;
+                    var obj={
+                        g_img:this.obj.g_img,
+                        num:1,
+                        g_id:this.obj.g_id,
+                        g_price:this.obj.g_price,
+                        g_name:this.obj.g_name,
+                        g_title:this.obj.g_title,
+                    }
 
+                    var flag=true;
+                    for(var i=0; i<arr.length; i++){
+                        if(arr[i].g_id==obj.g_id){
+                            arr[i].num=arr[i].num+obj.num;
+                            flag=false;
+                            break;
+                        }
+                    }
+                    if(flag){
+                        arr.push(obj);
+                    }
+
+                    $.cookie("cart",JSON.stringify(arr))
+
+                }else {
+                    console.log(1);
+                    $.ajax({
+                        url:"http://localhost:55555/home/cart",
+                        type:"post",
+                        data:{
+                            g_id:this.id,
+                            num:1,
+                            u_id:sessionStorage.getItem('user')
+                        }
+                    }).then(function(res){
+                        console.log(res);
+                    })
                 }
             }
         },
@@ -121,7 +159,6 @@
                 }
             }).then(function(res){
                 self.flag = true;
-                console.log(res[0]);
                 self.obj = res[0]
             })
         }
@@ -296,7 +333,8 @@
     }
     .footer .joinCart{
         background:linear-gradient(210deg, #ffcfdf, #fff1f6 98%);
-        color:#fe4070
+        color:#fe4070;
+        text-decoration:none;
     }
     .footer .buy{
         background:linear-gradient(142deg, #ff5593, #fe4070);

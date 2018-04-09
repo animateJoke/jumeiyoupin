@@ -56,6 +56,7 @@ const store = new Vuex.Store({
         num:0,
         numFree:0,
         num1:0,
+        isLogin:false,
  		numMama:0,
  		numBea:0,
  		numFod:0,
@@ -69,7 +70,6 @@ const store = new Vuex.Store({
         jiaju:[],
         isShow:false,
         isShow2:false,
-        status:0
 
     },
     //获取值得方法
