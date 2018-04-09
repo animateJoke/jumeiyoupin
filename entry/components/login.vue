@@ -29,7 +29,7 @@
 					
 				$.ajax({
 					type: "post",
-					url: "http://localhost:55556/register/login",
+					url: "http://localhost:55555/register/login",
 					data: {
 						u_name: self.username,
 						u_pwd: self.pwd
