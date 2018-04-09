@@ -109,13 +109,17 @@ router.post('/info', function(req, res, next) {
 router.post("/cart", function(req, res, next) {
 	res.append("Access-Control-Allow-Origin", "*");
 	var str = "select * from `cart` where g_id=? and u_id=?";
-	mysql(str, [req.body.g_id, req.body.u_id], function(c) {
+	mysql(str, [req.body.g_id, req.body.u_id], function(result) {
 		if (result.length == 1) {
-			var num = result[0].num + req.body.num;
-			mysql("update cart set num=? where g_id=? and u_id=?", [num, req.body.g_id, req.body.u_id], function() {
+			var num = parseInt(result[0].num) + parseInt(req.body.num);
+			mysql("update cart set num=? where g_id=? and u_id=?", [num, req.body.g_id, req.body.u_id], function(results) {
 				res.send("成功")
 			})
-		}
+		}else{
+            mysql("insert into cart set ?", [req.body], function(results) {
+                res.send("成功")
+            })
+        }
 	})
 });
 

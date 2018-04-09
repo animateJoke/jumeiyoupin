@@ -70,13 +70,10 @@
             <a href="#/home/cart" class="cart"><i class="iconfont">&#xe600;</i>
                 <p>购物车</p>
             </a>
-<<<<<<< HEAD
+
             <a href="javascript:void(0)" @click="joinCart" class="joinCart">加入购物车</a>
             <a href="javascript:void(0)" class="buy">立即购买</a>
-=======
-            <a href="#" class="joinCart" @click="joinCart">加入购物车</a>
-            <a href="#" class="buy">立即购买</a>
->>>>>>> ee5dab6d658cd85a73dc7abaee247718a2465a07
+
         </div>
     </div>
 </template>
@@ -109,15 +106,19 @@
 
             },
             joinCart(){
+                console.log(sessionStorage.getItem('user'));
+                var arr=JSON.parse($.cookie("cart")||'[]');
                 if(sessionStorage.getItem('user')==null){
                     var obj={
                         g_id:this.id,
                         num:1
                     };
-                    $.cookie("cart",JSON.stringify(obj))
+                    arr.push(obj);
+                    $.cookie("cart",JSON.stringify(arr))
                 }else {
+                    console.log(1);
                     $.ajax({
-                        url:"",
+                        url:"http://localhost:55555/home/cart",
                         type:"post",
                         data:{
                             g_id:this.id,
@@ -142,7 +143,6 @@
                 }
             }).then(function(res){
                 self.flag = true;
-                console.log(res[0]);
                 self.obj = res[0]
             })
         }
