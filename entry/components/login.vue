@@ -25,7 +25,7 @@
 		},
 		methods: {
 			login() {
-				var self = this;
+				var self = this
 				$.ajax({
 					type: "post",
 					url: "http://localhost:55556/register/login",
@@ -36,7 +36,6 @@
 				}).done((res) => {
 					if(res.length==1){
 						    window.location.href="#/home/index1/index2";
-                        	self.$store.state.status = 1;
                         }else {
                             alert("账号或密码错误");
                         }
