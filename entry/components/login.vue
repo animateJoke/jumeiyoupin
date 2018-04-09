@@ -36,7 +36,9 @@
                     }
                 }).done((res) => {
                     if (res.length == 1) {
+
                         sessionStorage.setItem('user', res[0].id);
+                        sessionStorage.setItem('tel', res[0].u_tel);
                         var cartlist=JSON.parse($.cookie("cart")||'[]')
 
                         for (var i = 0; i < cartlist.length; i++) {
