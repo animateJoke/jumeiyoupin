@@ -59,18 +59,14 @@
         },
         mounted(){
             $(document).on("scroll",function(){
-                if($(this).scrollTop()>$(".search").height()){
+                if($(this).scrollTop()>45){
                     $(".nav").css({
                         position:'fixed',
                         top:0
                     });
-                    $(".search").css({
-                        marginBottom:$(".nav").height()
-                    })
+                    
                 }else {
-                    $(".search").css({
-                        marginBottom:0
-                    })
+                    
                     $(".nav").css({
                         position:'static'
                     });

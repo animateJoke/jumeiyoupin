@@ -61,11 +61,12 @@
 		</div>
 		<div class="footer">
 			<ul>
-				<li class="back" @click="back"><首页</li>
+				<li class="back" @click="back"><i class="iconfont icon-fanhui"></i>首页</li>
 				<li v-text="getList1?getList1.old_price:''"></li>
 				<li v-text="getList1?getList1.new_price+'包邮开团':''"></li>
 			</ul>
 		</div>
+		<div class="toTop" @click="toTop"><i class="iconfont icon-fanhui"></i></div>
 	</div>
 </template>
 
@@ -156,7 +157,10 @@
 			},
 			back(){
 				window.history.back();
-			}
+			},
+			toTop() {
+                    document.documentElement.scrollTop = document.body.scrollTop = 0;
+            }
 		},
 		mounted() {
 			this.timeDown();
@@ -281,6 +285,7 @@
 		padding: .17rem 0;
 		font-size: 14px;
 		color: #666;
+		text-decoration: line-through;
 	}
 	section span{
 		color: #FF4070;
@@ -400,16 +405,19 @@
 		float: left;
 		margin-top: .09rem;
 	}
+	.footer  li i{
+		font-size: 8px;
+	}
 	.footer .back{
 		display: inline-block;
-		width: .4rem;
+		width: .5rem;
 		height: .4rem;
-		text-align: center;
+		/*text-align: center;*/
 		line-height: .4rem;
 		border: solid 1px #CCCCCC;
 		border-radius: 50%;
 		color: #666666;
-		font-size: 11px;
+		font-size: 9px;
 		margin-left: .12rem;
 	}
 	.footer  li:nth-child(2){
@@ -430,4 +438,16 @@
 		font-size: 12px;
 		border-radius: 20px;
 	}
+	.toTop{
+		width: .4rem;
+		height: .4rem;
+		border-radius: 50%;
+		border: solid 1px #CCCCCC;
+		position: fixed;
+		bottom: .5rem;
+		right: .3rem;
+		text-align: center;
+		line-height: .4rem;
+	}
+	
 </style>

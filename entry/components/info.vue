@@ -70,8 +70,13 @@
             <a href="#/home/cart" class="cart"><i class="iconfont">&#xe600;</i>
                 <p>购物车</p>
             </a>
+<<<<<<< HEAD
             <a href="javascript:void(0)" @click="joinCart" class="joinCart">加入购物车</a>
             <a href="javascript:void(0)" class="buy">立即购买</a>
+=======
+            <a href="#" class="joinCart" @click="joinCart">加入购物车</a>
+            <a href="#" class="buy">立即购买</a>
+>>>>>>> ee5dab6d658cd85a73dc7abaee247718a2465a07
         </div>
     </div>
 </template>
@@ -101,6 +106,7 @@
 
                 this.ele.scrollLeft(this.index * document.body.clientWidth);
 
+
             },
             joinCart(){
                 if(sessionStorage.getItem('user')==null){
@@ -121,6 +127,7 @@
                     }).then(function(res){
                         console.log(res);
                     })
+
                 }
             }
         },

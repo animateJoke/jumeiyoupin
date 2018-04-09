@@ -1,9 +1,9 @@
 <template>
     <div class="cart">
         <div class="head">
-            <a href="#"><img :src="src" alt="" class="pic"></a>
+            <a href="#" @click="goBack"><img :src="src" alt="" class="pic"></a>
             购物车
-            <a href="#"><img :src="src1" alt="" class="pic2"></a>
+            <a href="#/home/index1/index2"><img :src="src1" alt="" class="pic2"></a>
         </div>
         <div class="main">
             <p>您的购物车中没有商品,请先去挑选心爱的商品吧!</p>
@@ -17,13 +17,13 @@
 
             <div class="list">
                 <div class="tt">
-                    <span class="check"></span>
+                    <span @click="check" class="check" :style="{backgroundImage:bool?'url('+src4+')':'url('+src5+')'}"></span>
                     聚美优品发货
                 </div>
                 <ul>
                     <li class="dd">
                         <div class="left">
-                            <span class="check1"></span>
+                            <span class="check1" @click="check(0)" :style="{backgroundImage:arr.indexOf(0)?'url('+src4+')':'url('+src5+')'}"></span>
                             <img :src="src3" alt="" class="pic4">
                         </div>
 
@@ -48,7 +48,7 @@
                 </div>
 
                 <div class="pay">
-                    <span class="check"></span>
+                    <span class="check" @click="check" :style="{backgroundImage:bool?'url('+src4+')':'url('+src5+')'}"></span>
                     <span class="sp">全选</span>
                     <span class="sp2">合计</span>
                     <span class="sp3">¥232</span>
@@ -67,7 +67,20 @@
                 src: require("../../img/left_arrow.png"),
                 src1: require("../../img/home.png"),
                 src2: require("../../img/time.png"),
-                src3: require("../../img/p.jpg")
+                src3: require("../../img/p.jpg"),
+                src4:require("../../img/check.png"),
+                src5:require("../../img/check1.png"),
+                bool:true,
+                arr:[]
+            }
+        },
+        methods:{
+            goBack(){
+                window.history.back()
+            },
+            check(num){
+                // this.bool=!this.bool
+                this.arr.indexOf(num)==-1?this.arr.push(num):this.arr.splice(this.arr.indexOf(num),1)
             }
         }
     }
@@ -167,7 +180,7 @@
         display: inline-block;
         width: .2rem;
         height: .2rem;
-        background: url("../../img/check.png");
+
         background-size: .2rem;
         position: relative;
         top: .06rem;
@@ -260,7 +273,7 @@
         height: .49rem;
         background: #fff;
         padding: 0 .08rem;
-        margin-bottom: .86rem;
+        margin-bottom: .5rem;
         line-height: .49rem;
     }
     .sp{
