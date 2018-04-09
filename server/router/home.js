@@ -125,12 +125,17 @@ router.post("/cart", function(req, res, next) {
 
 router.post("/getCart",function(req, res){
     res.append("Access-Control-Allow-Origin", "*");
-    var str="select * from `cart` as a join `list` as b on a.g_id=b.g_id where u_id=?";
+    var str="select * from `cart` as a join `list` as b on a.g_id=b.g_id where u_id=? and status=1";
     mysql(str,[req.body.u_id],function(results){
         res.json(results)
     })
 });
-
+router.post('/delCart',function(req,res){
+    res.append("Access-Control-Allow-Origin", "*");
+    mysql("update cart set status=0 where g_id=? and u_id=?", [req.body.g_id, req.body.u_id], function(results) {
+        res.send("成功")
+    })
+})
 
 router.post('/fenye', function(req, res, next) {
 	res.append("Access-Control-Allow-Origin", "*");
