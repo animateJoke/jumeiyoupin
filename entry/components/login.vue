@@ -52,6 +52,7 @@
                                 }
                             })
                         }
+                        $.cookie("cart",null)
                         window.location.href = "#/home/index1/index2";
 
 
