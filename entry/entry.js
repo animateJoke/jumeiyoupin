@@ -56,6 +56,7 @@ const store = new Vuex.Store({
         num:0,
         numFree:0,
         num1:0,
+        isLogin:false,
  		numMama:0,
  		numBea:0,
  		numFod:0,

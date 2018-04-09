@@ -38,6 +38,7 @@
                 if($(this).scrollTop()>$(".search").height()){
                     $(".nav").css({
                         position:'fixed',
+                        zIndex:999,
                         top:0
                     });
                     $(".search").css({
@@ -56,7 +57,7 @@
     }
 </script>
 
-<style scoped="">
+<style scoped>
     .nav::-webkit-scrollbar{
         display:none;
     }
