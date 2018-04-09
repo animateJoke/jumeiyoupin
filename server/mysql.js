@@ -5,7 +5,7 @@ function createConn(str,json,fn){
         host: '101.200.60.236',
         user: 'root',
         password: '',
-        database: 'jumeiyoupin'
+        database: 'jumeiyouping'
     });
     connection.connect();
     //执行sql语句查询

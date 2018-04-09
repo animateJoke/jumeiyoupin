@@ -41,6 +41,23 @@
 		</div>
 		<div class="pinglun">
 			<p>买的人这样说</p>
+			<ul>
+				<li>
+					<img src="http://images2.jumei.com/user_avatar/105/000/105000863-64.jpg?1479559000">
+					<div class="uname">
+						偏偏喜欢你<br />
+						<span>加入聚美520天</span>
+					</div><br />
+					<h3>质量超好，一直用这个牌子，非常喜欢，满意满意。</h3>
+					<span>2018-03-20</span><br />
+					<span>型号: 25cm*19片</span><br />
+					<div class="pic">
+						<img src="http://p12.jmstatic.com/comment/1174426801-1520570661-3872.jpg?imageslim&amp;imageView2/1/w/270/h/270" alt="" class="fl" data-index="0">
+						<img src="http://p12.jmstatic.com/comment/1174426801-1520570645-9353.jpg?imageslim&amp;imageView2/1/w/270/h/270" alt="" class="fl" data-index="0">
+					</div>
+					<span class="span"><i>评论</i><b>1</b></span>
+				</li>
+			</ul>
 		</div>
 		<div class="tab">
 			<ul>
@@ -171,6 +188,7 @@
 				this.limitTime--;
 				this.timeDown();
 			}, 1000)
+			
 		}
 	}
 </script>
@@ -226,7 +244,7 @@
 		
 	}
 	.pinglun{
-		
+		height: 6rem;
 		margin-top: .1rem;
 		background: white;
 		font-size: 11px;	
@@ -236,6 +254,9 @@
 		background: white;
 		font-size: 11px;	
 		
+	}
+	.toTop{
+		transform: rotateZ(90deg);
 	}
 	.footer{
 		width: 100%;
@@ -373,6 +394,70 @@
 		background: url(../img/right.png) no-repeat right center;
 		background-size:.2rem;
 	}
+	.pinglun li{
+		padding: .2rem;
+		border-bottom: solid 1px #ccc;
+	}
+	.pinglun img{
+		width: .4rem;
+		height: .4rem;
+		border-radius: 50%;
+		float: left;
+	}
+	.pinglun .pic{
+		width: 100%;
+		height: 1.4rem;
+	}
+	.pinglun .pic .fl{
+		width: 1rem;
+		height: 1rem;
+		margin-right: .1rem;
+		margin-top: .1rem;
+		float: left;
+		border-radius:0;
+	}
+	
+	.pinglun .uname{
+		height: .5rem;
+		width: 2.6rem;
+		float: left;
+		font-size: 14px;
+		padding:0 .1rem;
+	}
+	.pinglun .uname span{
+		font-size: 12px;
+		color: #ccc;
+	}
+	.pinglun  h3{
+		margin-bottom: .1rem;
+		font-weight: normal;
+	}
+	.pinglun span{
+		color: #ccc;
+		
+		float: left;
+	}
+	.pinglun .span{
+		margin-left: 2.2rem;
+		margin-top: -.2rem;
+	}
+	.pinglun .span i{
+		display: inline-block;
+		height: .3rem;
+		line-height: .3rem;
+		background: url(../img/conmnet.png) no-repeat left;
+		background-size: .2rem;
+		padding-left: .3rem;
+		margin-right: .1rem;
+	}
+	.pinglun .span b{
+		background: url(../img/zan.png) no-repeat left;
+		display: inline-block;
+		height: .3rem;
+		line-height: .3rem;
+		background-size: .2rem;
+		padding-left: .3rem;
+	}
 	.tab ul{
 		height: .5rem;
 		line-height: .5rem;
@@ -439,6 +524,7 @@
 		border-radius: 20px;
 	}
 	.toTop{
+
 		width: .4rem;
 		height: .4rem;
 		border-radius: 50%;
