@@ -4,6 +4,7 @@ require("./css/reset.css");
 require("./css/iconfont/iconfont.css");
 
 import $ from "jquery"
+require('./jquery.cookie')
 import getAjax from "./ajax.js"
 
 //状态管理
@@ -70,7 +71,7 @@ const store = new Vuex.Store({
         jiaju:[],
         isShow:false,
         isShow2:false,
-
+        cartNum:0
     },
     //获取值得方法
     getters : {
@@ -181,7 +182,28 @@ new Vue({
     router,
     store,
     beforeCreate(){
+        (function(self){
+            if(sessionStorage.getItem('user')==null){
+                var arr=JSON.parse($.cookie('cart')||'[]');
+                for(var i=0; i<arr.length; i++){
+                    self.$store.state.cartNum+=parseInt(arr[i].num)
+                }
+            }else {
+                $.ajax({
+                    url : "http://101.200.60.236:55555/home/getCart",
+                    type : "post",
+                    dataType : "json",
+                    data : {
+                        u_id : sessionStorage.getItem("user")
+                    }
+                }).then(function(res){
+                    for(var i=0; i<res.length; i++){
+                        self.$store.state.cartNum+=parseInt(res[i].num)
+                    }
+                })
 
+            }
+        })(this);
         getAjax("http://101.200.60.236:55555/home/list",this.$store.state.num,function(arr){
             this.$store.state.list =this.$store.state.list.concat(arr);
         }.bind(this));

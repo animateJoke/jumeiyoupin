@@ -8,7 +8,7 @@
         <form>
             <input type="text" placeholder="请输入用户名" v-model="username"/>
             <input type="password" placeholder="6-16位登录密码" v-model="pwd"/>
-            <input type="submit" value="登录" @click="login"/>
+            <input type="button" value="登录" @click="login"/>
         </form>
     </div>
 </template>
@@ -53,6 +53,19 @@
                             })
                         }
                         $.cookie("cart",'[]');
+                        $.ajax({
+                            url : "http://101.200.60.236:55555/home/getCart",
+                            type : "post",
+                            dataType : "json",
+                            data : {
+                                u_id : sessionStorage.getItem("user")
+                            }
+                        }).then(function(res){
+                            self.$store.state.cartNum=0
+                            for(var i=0; i<res.length; i++){
+                                self.$store.state.cartNum+=parseInt(res[i].num)
+                            }
+                        })
                         window.location.href = "#/home/index1/index2";
 
 

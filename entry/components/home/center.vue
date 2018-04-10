@@ -131,6 +131,7 @@
         methods:{
             esc(){
                 sessionStorage.clear();
+                this.$store.state.cartNum=0;
                 this.bool = true
             }
         }

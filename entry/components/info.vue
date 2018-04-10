@@ -68,7 +68,7 @@
                 <p>店铺</p>
             </a>
             <a href="#/home/cart" class="cart"><i class="iconfont">&#xe600;</i>
-                <p>购物车 <i></i></p>
+                <p>购物车 <em class="cartNum" v-show="getCartNum!=0" v-text="getCartNum"></em></p>
             </a>
 
             <a href="javascript:void(0)" @click="joinCart" class="joinCart">加入购物车</a>
@@ -106,9 +106,9 @@
 
             },
             joinCart(){
+                this.$store.state.cartNum+=1
                 var arr=JSON.parse($.cookie("cart")||'[]');
                 if(sessionStorage.getItem('user')==null){
-                    this.obj.num=1;
                     var obj={
                         g_img:this.obj.g_img,
                         num:1,
@@ -133,7 +133,6 @@
                     $.cookie("cart",JSON.stringify(arr))
 
                 }else {
-                    console.log(1);
                     $.ajax({
                         url:"http://101.200.60.236:55555/home/cart",
                         type:"post",
@@ -161,6 +160,11 @@
                 self.flag = true;
                 self.obj = res[0]
             })
+        },
+        computed:{
+            getCartNum(){
+                return this.$store.state.cartNum
+            }
         }
     }
 </script>
@@ -339,5 +343,21 @@
     .footer .buy{
         background:linear-gradient(142deg, #ff5593, #fe4070);
         color:#fff;
+    }
+    .footer .cart{
+
+        position:relative;
+    }
+    .cartNum{
+        background-color:red;
+        color:#fff;
+        width:.2rem;
+        height:.2rem;
+        text-align:center;
+        line-height:.2rem;
+        border-radius: 50%;
+        position:absolute;
+        top:0;
+        right: .1rem;
     }
 </style>
