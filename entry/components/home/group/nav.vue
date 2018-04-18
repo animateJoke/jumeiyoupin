@@ -45,7 +45,7 @@
 </template>
 
 <script>
-	import $ from "jquery"
+	const $=require("jquery");
     export default {
         data(){
             return {

@@ -1,5 +1,8 @@
+var webpack=require('webpack');
 const path = require('path');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+var vue = require('vue-loader');
+var ExtractTextPlugin = require("extract-text-webpack-plugin");
 module.exports = {
     //入口
     entry : './entry/entry.js',
@@ -17,10 +20,10 @@ module.exports = {
     },
     devServer : {
         contentBase : './output',
-        historyApiFallback: true, //不跳转
-        port: 12345,
+        historyApiFallback : true, //不跳转
+        port : 12345,
         //port 设置默认监听端口，如果省略，默认为”8080“
-        inline: true //实时刷新
+        inline : true //实时刷新
     },
     module : {
         rules : [{
@@ -54,16 +57,28 @@ module.exports = {
         }, {
             test : /\.svg/,
             loader : 'file-loader?prefix=font/'
-        },{
-            test: /\.(vue)$/,
-            use: {
-                loader: 'vue-loader',
+        }, {
+            test : /\.(vue)$/,
+            use : {
+                loader : 'vue-loader',
+            }
+        }, {
+            test : /\.js$/,
+            use : {
+                loader : 'babel-loader'
             }
         }]
     },
-    watch : true,
-     plugins: [
-         new UglifyJsPlugin()
-         //new HtmlWebpackPlugin({template: './src/index.html'})
-     ]
+    // watch : true,
+    plugins : [
+        new UglifyJsPlugin(),
+        new webpack.LoaderOptionsPlugin({
+            test : /\.vue$/,
+            babel : {
+                presets : ['es2015'],
+                plugins : ['transform-runtime']
+            }
+        })
+        // new HtmlWebpackPlugin({template: './src/index.html'})
+    ]
 };

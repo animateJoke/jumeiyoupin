@@ -30,7 +30,7 @@
                             <p class="p2" v-html="a.g_title+' <span>x'+a.num+'</span>'"></p>
                             <p class="p3">
                                 <span v-text="'￥'+a.g_price*a.num"></span>
-                                <i  @click.prevent="del(a.g_id)">删除</i>
+                                <i  @click.prevent="del(a.g_id,a.num)">删除</i>
                             </p>
                         </a>
                     </li>
@@ -51,7 +51,7 @@
 </template>
 
 <script>
-    import $ from "jquery";
+    const $=require("jquery");
 
     require("../../jquery.cookie");
     export default {
@@ -91,8 +91,8 @@
                     this.arr.push(this.list[i].g_id)
                 }
             },
-            del(g_id){
-
+            del(g_id,num){
+                this.$store.state.cartNum-=num;
                 if(sessionStorage.getItem("user") != null){
                     $.ajax({
                         url : "http://101.200.60.236:55555/home/delCart",

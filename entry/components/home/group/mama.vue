@@ -16,7 +16,7 @@
 </template>
 
 <script>
-	import $ from "jquery"
+	const $=require("jquery");
 	import getAjax from "../../../ajax.js"
 	export default {
 		data() {

@@ -46,7 +46,7 @@
 </template>
 
 <script>
-    import $ from "jquery"
+   const $=require("jquery");
     export default {
         data(){
             return {
@@ -87,7 +87,6 @@
                 }
             }).then(function (res) {
                 self.arr5=res
-
             })
         }
     }

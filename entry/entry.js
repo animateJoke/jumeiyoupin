@@ -3,8 +3,9 @@ import Vue from "vue";
 require("./css/reset.css");
 require("./css/iconfont/iconfont.css");
 
-import $ from "jquery"
-require('./jquery.cookie')
+const $=require("jquery");
+window.$ = $;
+require('./jquery.cookie');
 import getAjax from "./ajax.js"
 
 //状态管理
@@ -52,7 +53,6 @@ import jiaju from "./components/home/group/jiaju.vue";
 
 const store = new Vuex.Store({
     //消息
-
     state: {
         num:0,
         numFree:0,

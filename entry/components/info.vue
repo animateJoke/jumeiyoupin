@@ -79,7 +79,7 @@
 </template>
 
 <script>
-    import $ from "jquery"
+    const $=require("jquery");
     require("../jquery.cookie");
     export default {
         data(){
